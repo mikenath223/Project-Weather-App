@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Project Weather App</title>
 </head>
+
 <body>
-  
+  <main class="main-container">
+    <section class="container">
+    <section class="left-sect">
+      <nav class="logo">weatherGuard</nav>
+      <section class="advise-weather">
+        <div class="advise">
+          <img src="../src/assets/umbrella.png" alt="umbrella" class="umbrella">
+          <p>You might get wet out there.</p>
+        </div>
+        <div class="weather-info">
+
+        </div>
+      </section>
+    </section>
+
+    <aside class="aside">
+      <header class="search-location">
+        <input type="text" name="location" id="location" placeholder="Enter location" class="search">
+        <div class="icon-wrap">
+          <img src="../src/assets/search.png" alt="search">
+        </div>
+      </header>
+      <div class="recent-search">
+
+      </div>
+      <hr>
+      <h4 class="details-head">Weather Details</h4>
+      <p class="weather"></p>
+      <p class="humidity"></p>
+      <p class="wind"></p>
+    </aside>
+  </section>
+
+  </main>
   <script src="./bundle.js"></script>
 </body>
+
 </html>
