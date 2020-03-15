@@ -11,36 +11,64 @@
 <body>
   <main class="main-container">
     <section class="container">
-    <section class="left-sect">
-      <nav class="logo">weatherGuard</nav>
-      <section class="advise-weather">
-        <div class="advise">
-          <img src="../src/assets/umbrella.png" alt="umbrella" class="umbrella">
-          <p>You might get wet out there.</p>
-        </div>
-        <div class="weather-info">
+      <section class="left-sect">
+        <h1 class="logo">weatherGuard</h1>
+        <div class="info-wrap">
+          <section class="advise-weather">
 
+            <div class="top-ad">
+              <p>New York, USA</p>
+              <p> 12 Jun 2020,<br> <span class="day">THURSDAY</span> </p>
+            </div>
+            <hr>
+
+            <div class="weather-info">
+              <div class="temp-wrap">
+                <h1 class="temp-h1">46</h1>
+                <img src="../src/assets/partly-cloudy.png" alt="temp-img" class="temp-img">
+              </div>
+              
+              <div class="advise">
+                <img src="../src/assets/umbrella.png" alt="umbrella" class="umbrella">
+                <p>You might get wet out there.</p>
+              </div>
+              <hr>
+
+              <div class="weather-more">
+                <div class="humid">
+                  <img src="../src/assets/humid.png" alt="humid">
+                  <span class="same-font">25%</span>
+                </div>
+                <div class="wind-speed">
+                  <img src="../src/assets/wind.png" alt="wind">
+                  <span class="same-font">25%</span>
+                </div>
+
+                <div class="temp-type same-font"><p class="cel">C</p><p class="faren">F</p></div>
+              </div>
+
+            </div>
+          </section>
         </div>
       </section>
-    </section>
 
-    <aside class="aside">
-      <header class="search-location">
-        <input type="text" name="location" id="location" placeholder="Enter location" class="search">
-        <div class="icon-wrap">
-          <img src="../src/assets/search.png" alt="search">
+      <aside class="aside">
+        <header class="search-location">
+          <input type="text" name="location" id="location" placeholder="Enter location" class="search">
+          <div class="icon-wrap">
+            <img src="../src/assets/search.png" alt="search">
+          </div>
+        </header>
+        <div class="recent-search">
+
         </div>
-      </header>
-      <div class="recent-search">
-
-      </div>
-      <hr>
-      <h4 class="details-head">Weather Details</h4>
-      <p class="weather"></p>
-      <p class="humidity"></p>
-      <p class="wind"></p>
-    </aside>
-  </section>
+        <hr>
+        <h4 class="details-head">Weather Details</h4>
+        <p class="weather"></p>
+        <p class="humidity"></p>
+        <p class="wind"></p>
+      </aside>
+    </section>
 
   </main>
   <script src="./bundle.js"></script>

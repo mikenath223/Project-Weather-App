@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Vollkorn:ital,wght@0,600;0,700;1,400&display=swap');
+
 body {
   min-height: 100vh;
+  font-family: 'Vollkorn', serif;
 }
 
 .main-container {
@@ -11,6 +14,7 @@ body {
 }
 
 .container {
+  background-attachment: fixed;
   overflow: hidden;
   background: url(./assets/wall2.jpg) no-repeat;
   min-height: 80vh;
@@ -18,37 +22,90 @@ body {
   flex-grow: 3;
   background-size: cover;
   display: grid;
+  column-gap: 20px;
   grid-template-columns: 2fr 1fr;
   border-radius: 20px;
 }
 
+.logo {
+  position: absolute;
+  top: 0px;
+  font-size: 65px;
+  font-family: 'Chewy', cursive;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0,0,0,0.1);
+  background-image: url(./assets/glossy-text.jpg);
+}
+
 .umbrella {
-  max-height: 200px;
+  max-height: 100px;
   width: auto;
 }
 
-.aside {
+.left-sect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  background: transparent;
-  overflow-x: hidden;
-  padding-left: 20px;
 }
 
-.aside::after {
+.info-wrap {
+  flex-grow: 2;
+  min-height: 50vh;
+  max-width: 45vw;
+  background: inherit;
+  overflow: hidden;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  position: relative;
+}
+
+.info-wrap:before {
+  content: '';
+  position: absolute;
+  background: inherit;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.5);
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+  margin: -20px;
+}
+
+.info-wrap * {
+  position: relative;
+  z-index: 15;
+}
+
+
+.aside {
+  background: transparent;
+  overflow: hidden;
+  padding-left: 10px;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.aside::before {
   content: "";
   position: absolute;
-  top: 0;
-  right: -25px;
-  height: 100%;
-  width: 100%;
-  -webkit-filter: blur(20px);
-  filter: blur(20px);
-  background: url(./assets/wall2.jpg) 50%/ 0 no-repeat;
-  background-size: cover;
+  background: inherit;
+  top: -15px;
+  height: 110%;
+  width: 110%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.5);
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
   border-radius: 20px;
 }
 
-.aside *, .aside * {
+.aside * {
   position: relative;
   z-index: 5;
 }
@@ -56,9 +113,11 @@ body {
 .search {
   background: transparent;
   border: none;
-  border-bottom: 2px solid gray;
-  color: rgb(245, 243, 243);
+  border-bottom: 2px solid rgb(243, 114, 8);
   width: 60%;
+  color: rgb(1, 12, 10);
+  height: 30px;
+  margin-top: 30px;
   transition: width 0.8s;
 }
 
@@ -68,9 +127,15 @@ body {
 }
 
 .search::placeholder {
-  font-size: 20px;
-  padding-left: 20px;
-  color: silver;
+  font-size: 25px;
+  padding-left: 10px;
+  color: rgb(1, 12, 10);
+}
+
+.search::-moz-placeholder {
+  font-size: 25px;
+  padding-left: 10px;
+  color: rgb(129, 13, 9);
 }
 
 .search-location {
@@ -83,10 +148,75 @@ body {
 .icon-wrap {
   border-top-right-radius: 20px;
   background-color: rgb(255, 136, 0);
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.icon-wrap>img {
+  width: 20px;
+  height: 20px;
+}
+
+.temp-h1 {
+  display: inline-block;
+  font-size: 10em;
+  margin: 0;
+  font-family: 'Chewy', cursive;
+}
+
+.top-ad {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-ad > p {
+  margin: 10px;
+  font-size: 1.4em;
+}
+
+.weather-more {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.weather-more * {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.same-font {
+  font-size: 50px;
+}
+
+.top-ad p,.temp-h1, .same-font:not(last-child), .same-font p, .day {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0,0,0,0.1);
+  background-position: 50% 380px;
+  background-image: url(./assets/dark-gloss.jpg);
+}
+
+.cel {
+  margin-right: 20px;
+}
+
+.cel::after, .faren::after {
+  content: '0';
+  position: absolute;
+  top: -17px;
+  color: #000;
+  z-index: 7;
+  font-size: 0.6em;
+  right: 20px;
+}
+
+.temp-wrap {
+
 }
