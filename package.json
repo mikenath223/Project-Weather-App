@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:watch": "npx webpack --mode=development --watch",
-    "start:dev": "npx webpack --mode=development"
+    "start:dev": "npx webpack --mode=development",
+    "babel:build": "babel src -d lib"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,10 @@
   },
   "homepage": "https://github.com/mikenath223/Project-Weather-App#readme",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-transform-async-to-generator": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
     "css-loader": "^3.4.2",
     "file-loader": "^5.1.0",
     "style-loader": "^1.1.3",
