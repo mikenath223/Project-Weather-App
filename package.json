@@ -1,0 +1,28 @@
+{
+  "name": "project-weather-app",
+  "version": "1.0.0",
+  "description": "A weather app using the open-weather-api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:watch": "npx webpack --mode=development --watch",
+    "start:dev": "npx webpack --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikenath223/Project-Weather-App.git"
+  },
+  "author": "Michgolden Ukeje",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikenath223/Project-Weather-App/issues"
+  },
+  "homepage": "https://github.com/mikenath223/Project-Weather-App#readme",
+  "devDependencies": {
+    "css-loader": "^3.4.2",
+    "file-loader": "^5.1.0",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
