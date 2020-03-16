@@ -1,6 +1,9 @@
 import './style.css';
 import './Normalize.css';
-import makeRequest from './assets/handler';
+import getLocation from "./location";
+import makeRequest from './handler';
 
+
+getLocation();
 
 // makeRequest('Abuja');
