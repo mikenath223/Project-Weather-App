@@ -17,16 +17,16 @@
           <section class="advise-weather">
 
             <div class="top-ad">
-              <p>New York, USA</p>
+              <p class="location">New York, USA</p>
               <div class='toggle'>
-                  <div class='theme-switch-wrapper'>
-                    <label class='theme-switch' for='checkbox'>
-                      <input id='checkbox' type='checkbox'>
-                      <div class='slider round'><span class="cel togg">C</span><span class="faren togg">F</span></div>
-                    </label>
-                  </div>
+                <div class='theme-switch-wrapper'>
+                  <label class='theme-switch' for='checkbox'>
+                    <input id='checkbox' type='checkbox'>
+                    <div class='slider round'><span class="cel togg">C</span><span class="faren togg">F</span></div>
+                  </label>
                 </div>
-              <p class="date"> 10:27AM THURSDAY, <br> <span class="day">12 Jun 2020</span> </p>
+              </div>
+              <p class="date"></p>
             </div>
             <hr>
 
@@ -35,7 +35,7 @@
                 <h1 class="temp-h1">46</h1>
                 <img src="../src/assets/partly-cloudy.png" alt="temp-img" class="temp-img">
               </div>
-              
+
               <div class="advise">
                 <img src="../src/assets/umbrella.png" alt="umbrella" class="umbrella">
                 <p>You might get wet out there.</p>
@@ -52,7 +52,10 @@
                   <span class="same-font">25%</span>
                 </div>
 
-                <div class="temp-type same-font"><p class="cel">C</p><p class="faren">F</p></div>
+                <div class="temp-type same-font">
+                  <p class="cel">C</p>
+                  <p class="faren">F</p>
+                </div>
               </div>
 
             </div>
@@ -62,16 +65,19 @@
 
       <aside class="aside">
         <header class="search-location">
-          <input type="text" name="location" id="location" placeholder="Enter location" class="search">
+          <input type="text" name="location" id="location" placeholder="Enter location" class="search" maxlength="15">
           <div class="icon-wrap">
-            <img src="../src/assets/search.png" alt="search">
+            <img src="../src/assets/search.png" alt="search" class="search-icon">
           </div>
         </header>
         <div class="recent-search">
           <h4>Recent Searches</h4>
         </div>
         <hr>
-        <div class="details">
+        <div class="map" id="map">
+
+        </div>
+        <!-- <div class="details">
           <h4 class="details-head">Weather Details</h4>
           <p class="weather">Weather <span>Partly Cloudy</span></p>
           <p class="humidity">Humidity <span>50%</span></p>
@@ -81,7 +87,7 @@
             <p class="weather"></p>
             <p class="humidity"></p>
             <p class="wind"></p>
-        </div>
+        </div> -->
       </aside>
     </section>
 
