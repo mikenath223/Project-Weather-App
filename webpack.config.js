@@ -1,5 +1,6 @@
 const path = require("path");
-let webpack = require('webpack');
+require("dotenv").config();
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.js",
@@ -7,6 +8,7 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist")
   },
+  plugins: [new webpack.EnvironmentPlugin(["OPEN_WEATHER_API_KEY", "GOOGLE_MAP_API_KEY"])],
   module: {
     rules: [
       {

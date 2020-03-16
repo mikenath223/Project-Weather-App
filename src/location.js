@@ -1,6 +1,5 @@
-import activateAnime from "./dom-interface";
-
-let location;
+import { animeSearch, selectQuery } from "./dom-interface";
+import makeRequest from "./handler";
 
 const getLocation = () => {
   if (navigator.geolocation) {
@@ -11,14 +10,28 @@ const getLocation = () => {
 const showPosition = position => {
   const lat = position.coords.latitude;
   const long = position.coords.longitude;
-  location = `${lat} ${long}`;
+  // makeRequest(`${lat} ${long}`, "location");
+  // let img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_KEY";
+  console.log(process.env.GOOGLE_MAP_API_KEY);
+  
+  // document.getElementById("mapholder").innerHTML =
+  //   "<img src='" + img_url + "'>";
+  const mapElem = selectQuery("#map");
+  const loadGoogleMapApi = require("load-google-maps-api");
+  loadGoogleMapApi({ key: process.env.GOOGLE_MAP_API_KEY }).then(map => {
+    new map.Map(mapElem, {
+      center: { lat: lat, lng: long },
+      zoom: 14
+    });
+  });
+
   return;
 };
 
 const showError = error => {
   if (error.PERMISSION_DENIED) {
-    activateAnime();
+    animeSearch();
   }
 };
 
-export { getLocation, location };
+export default getLocation;

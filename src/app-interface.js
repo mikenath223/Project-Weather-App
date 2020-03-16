@@ -1,3 +1,3 @@
-import { getLocation } from "./location";
+// import { getLocation } from "./location";
 
-getLocation();
+// getLocation();
