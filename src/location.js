@@ -10,8 +10,7 @@ const getLocation = () => {
 const showPosition = position => {
   const lat = position.coords.latitude;
   const long = position.coords.longitude;
-  // makeRequest(`${lat} ${long}`, "location");
-  console.log(process.env.GOOGLE_MAP_API_KEY);
+  makeRequest(`${lat} ${long}`, "location", 'metric');
 
   googleMaps(lat, long);
 
@@ -39,7 +38,7 @@ const googleMaps = (lat, long) => {
         map: mapCreated
       });
       mapCreated.panTo(e.latLng);
-      // makeRequest(`${e.latLng.lat()} ${e.latLng.lng()}`, "location");
+      makeRequest(`${e.latLng.lat()} ${e.latLng.lng()}`, "location");
     });
   });
 };
