@@ -1,10 +1,10 @@
 import animeSearch from './dom-interface';
-import { makeRequest, googleMaps } from './handler';
+import googleMaps from './handler';
 
 const showPosition = position => {
   const lat = position.coords.latitude;
   const long = position.coords.longitude;
-  makeRequest(`${lat} ${long}`, 'location', true);
+  googleMaps(lat, long, true);
 };
 
 const showError = error => {
