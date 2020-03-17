@@ -35,7 +35,7 @@ body {
 
 .logo {
   position: absolute;
-  top: -40px;
+  top: -20px;
   font-size: 60px;
   font-family: 'Chewy', cursive;
   background-clip: text;
@@ -47,14 +47,19 @@ body {
 .umbrella {
   max-height: 50px;
   width: auto;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .advise {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  margin: 5px;
+  max-width: 320px;
+  margin: 5 auto;
+}
+
+.advise > p {
+  font-size: 1.3em;
 }
 
 .left-sect {
@@ -126,16 +131,17 @@ body {
   background: transparent;
   border: none;
   border-bottom: 2px solid rgb(243, 114, 8);
-  width: 60%;
+  width: 50%;
   color: rgb(1, 12, 10);
   height: 30px;
   margin: 30px 0 0 10px;
+  font-size: 20px;
   transition: width 0.8s;
 }
 
 .search:focus {
   outline: none;
-  width: 70%;
+  width: 80%;
 }
 
 .search::placeholder {
@@ -172,6 +178,10 @@ body {
   font-size: 60px;
 }
 
+.icon-desc {
+  text-align: right;
+}
+
 .icon-wrap>img {
   width: 20px;
   height: 20px;
@@ -184,10 +194,14 @@ body {
   font-family: 'Chewy', cursive;
 }
 
-.humid-info, .wind-info {
+.humid-info, .wind-info, .feels-info {
   display: flex;
   flex-direction: column;
   font-size: 25px;
+}
+
+.feels-score {
+  font-size: 30px;
 }
 
 .location {
@@ -245,38 +259,6 @@ body {
 
 .top-ad .date {
   font-size: 17px;
-}
-
-.cel {
-  display: var(--celdisplay);
-  margin-right: 20px;
-}
-
-.faren {
-  display: var(--farendisplay);
-}
-
-.cel::after, .faren::after {
-  content: '0';
-  position: absolute;
-  top: -20px;
-  color: #000;
-  z-index: 7;
-  font-size: 0.6em;
-  right: 50px;
-}
-
-.cel::after {
-  display: var(--celdisplay);
-}
-
-.faren::after {
-  display: var(--farendisplay);
-}
-
-.cel, .faren {
-  font-size: 95px;
-  align-self: flex-end;
 }
 
 .temp {
@@ -347,6 +329,39 @@ input:checked+.slider:before {
   border-radius: 34px;
 }
 
+.cel {
+  display: var(--celdisplay);
+  margin-right: 20px;
+}
+
+.faren {
+  margin-left: 10px;
+  display: var(--farendisplay);
+}
+
+.cel::after, .faren::after {
+  content: '0';
+  position: absolute;
+  top: -20px;
+  color: #000;
+  z-index: 7;
+  font-size: 0.6em;
+  right: 50px;
+}
+
+.cel::after {
+  display: var(--celdisplay);
+}
+
+.faren::after {
+  display: var(--farendisplay);
+}
+
+.cel, .faren {
+  font-size: 95px;
+  align-self: flex-end;
+}
+
 .togg {
   color: orangered;
   display: inline-block;
@@ -368,6 +383,8 @@ input:checked+.slider:before {
   right: 15px;
   font-size: 0.6em;
 }
+
+
 
 .recent-search, .details, .more-details {
   margin: 10px 20px;

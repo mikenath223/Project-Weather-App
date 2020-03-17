@@ -13,8 +13,9 @@ const makeRequest = async (query, check) => {
       strQuery = `http://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=${key}`;
       break;
   }
+  console.log(strQuery);
   if (!strQuery) return;
-
+    
   try {
     const response = await fetch(strQuery, {
       mode: "cors"
@@ -23,8 +24,8 @@ const makeRequest = async (query, check) => {
     console.log(data);
     renderData(data);
   } catch (error) {
-    renderData(false, error.message);
-    console.log("Input not correct");
+    // renderData('null', error.message);
+    console.log(error);
   }
 };
 

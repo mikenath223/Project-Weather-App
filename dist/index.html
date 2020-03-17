@@ -32,12 +32,15 @@
 
             <div class="weather-info">
               <div class="temp">
-                <i class="wi wi-day-sunny"></i>
-                <h1 class="temp-h1">You can search a location or simply click anywhere on the map to get weather info.</h1>
+                <div class="icon-desc">
+                  <span class="weather-desc"></span>
+                  <i class="wi wi-day-sunny"></i>
+                </div>
+                <h1 class="temp-h1">You can search a location or simply click anywhere on the map to get weather info.
+                </h1>
                 <p class="cel">C</p>
                 <p class="faren">F</p>
               </div>
-              <!-- <img src="../src/assets/partly-cloudy.png" alt="temp-img" class="temp-img"> -->
 
               <div class="advise">
                 <img src="../src/assets/umbrella.png" alt="umbrella" class="umbrella">
@@ -50,7 +53,15 @@
                   <p>Humidity</p>
                   <div class="humid">
                     <img src="../src/assets/humid.png" alt="humid" class="humid">
-                    <span class="humid-score">25%</span>
+                    <span class="humid-score"></span>
+                  </div>
+                </div>
+
+                <div class="feels-info">
+                  <p>Feels like</p>
+                  <div class="humid">
+                    <!-- <img src="../src/assets/humid.png" alt="humid" class="humid"> -->
+                    <span class="feels-score"></span>
                   </div>
                 </div>
 
@@ -58,7 +69,7 @@
                   <p>Wind Speed</p>
                   <div class="wind-speed">
                     <img src="../src/assets/wind.png" alt="wind">
-                    <span class="wind-score">25%</span>
+                    <span class="wind-score"></span>
                   </div>
                 </div>
 

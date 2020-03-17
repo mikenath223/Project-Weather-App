@@ -1,5 +1,6 @@
 import makeRequest from "./handler";
-import { iconSwitch } from "./app-interface";
+import { iconSwitch, checkWeather } from "./app-interface";
+import { googleMaps } from './location';
 
 const selectQuery = query => document.querySelector(query);
 const searchIcon = selectQuery(".icon-wrap");
@@ -49,60 +50,71 @@ const showCountry = (query, city) => {
   countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
   let quest;
   if (query == "US") quest = "USA";
-  location.textContent = `${city}, ${quest || countries.getName(query, "en")}`;
+  location.textContent = `${city || "Unknown"}, ${quest ||
+    countries.getName(query, "en") ||
+    " Location"}`;
 };
 
 const renderData = (data, message) => {
-  const toCelsius = (tempElem, temp) => {
+  const mainData = data.main;
+  const feels_like = mainData.feels_like;
+  const temp = mainData.temp;
+  
+  let newFeels = feels_like * 1.8 + 32;
+  newFeels = Math.round((newFeels + Number.EPSILON) * 100) / 100;
+  
+  let newTemp = temp * 1.8 + 32;
+  newTemp = Math.round((newTemp + Number.EPSILON) * 100) / 100;
+  const country = data.sys.country;
+  const city = data.name;
+  const humidity = mainData.humidity;
+  const wind = data.wind.speed;
+  const switchTemp = document.querySelector('input[type="checkbox"]');
+
+
+  let feelsElem = selectQuery(".feels-score");
+  const toCelsius = (tempElem, temp, Feels) => {
     tempElem.textContent = temp;
     document.body.style.setProperty("--farendisplay", "none");
     document.body.style.setProperty("--celdisplay", "initial");
-  }
+    feelsElem.innerHTML = `${Feels}<span class="togg">C</span>`;
+  };
 
-  const toFaren = (tempElem, newTemp) => {
+  const toFaren = (tempElem, newTemp, like) => {  
     tempElem.textContent = newTemp;
     document.body.style.setProperty("--celdisplay", "none");
     document.body.style.setProperty("--farendisplay", "initial");
-  }
+    feelsElem.innerHTML = `${like}<span class="togg">F</span>`;
+  };
 
   const tempElem = selectQuery(".temp-h1");
   if (!data) {
     tempElem.style.fontSize = "1em";
     tempElem.textContent = message;
   }
-  const country = data.sys.country;
-  const city = data.name;
-  const mainData = data.main;
-  const temp = mainData.temp;
-  const humidity = mainData.humidity;
-  const pressure = mainData.pressure;
-  const feelsLike = mainData.feels_like;
-  const wind = data.wind.speed;
-  const switchTemp = document.querySelector('input[type="checkbox"]');
-  let newTemp = temp * 1.8 + 32;
-  newTemp = Math.round((newTemp + Number.EPSILON) * 100) / 100
 
   if (switchTemp.checked) {
-    toFaren(tempElem, newTemp);
+    toFaren(tempElem, newTemp, newFeels);
   } else {
-    toCelsius(tempElem, temp);
+    toCelsius(tempElem, temp, feels_like);
   }
   
   showCountry(country, city);
   tempElem.style.fontSize = "8em";
-  console.log(data.weather[0].id);
-  
-  iconSwitch(data.weather[0].id)
+
+  iconSwitch(data.weather[0]);
   selectQuery(".humid-score").textContent = `${humidity}%`;
   selectQuery(".wind-score").textContent = `${wind}mph`;
-  switchTemp.addEventListener("change", function(e) {
+
+  switchTemp.addEventListener("change", (e)=> {
     if (e.target.checked) {
-      toFaren(tempElem, newTemp);
+      toFaren(tempElem, newTemp, newFeels);
     } else {
-      toCelsius(tempElem, temp);
+      toCelsius(tempElem, temp, feels_like);
     }
   });
+  checkWeather(data.weather[0].description)
+  googleMaps(data.coord.lat, data.coord.lon);
 };
 
 export { getInput, animeSearch, load, showCountry, selectQuery, renderData };
-

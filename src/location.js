@@ -12,14 +12,13 @@ const showPosition = position => {
   const long = position.coords.longitude;
   makeRequest(`${lat} ${long}`, "location", 'metric');
 
-  googleMaps(lat, long);
-
   return;
 };
 
 const showError = error => {
   if (error.PERMISSION_DENIED) {
     animeSearch();
+    googleMaps(37, -95)
   }
 };
 
@@ -33,7 +32,7 @@ const googleMaps = (lat, long) => {
     });
     mapCreated.addListener("click", function(e) {
       console.log(e.latLng.lat());
-      var marker = new map.Marker({
+      new map.Marker({
         position: e.latLng,
         map: mapCreated
       });
@@ -43,4 +42,4 @@ const googleMaps = (lat, long) => {
   });
 };
 
-export default getLocation;
+export { getLocation, googleMaps };
