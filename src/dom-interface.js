@@ -79,19 +79,19 @@ const switchLoader = () => {
   const weather = selectQuery(".weather-more");
   const advise = selectQuery(".advise");
   const load = selectQuery('.load-wrap')
-  top.style.visibility = "hidden";
-  temp.style.visibility = "hidden";
-  weather.style.visibility = "hidden";
-  advise.style.visibility = "hidden";
-  load.style.visibility = 'visible'
+  top.style = "opacity: 0";
+  temp.style = "opacity: 0";
+  weather.style = "opacity: 0";
+  advise.style =  "opacity: 0";
+  load.style = "opacity: 1";
 
   setTimeout(() => {
-    top.style.visibility = "visible";
-    temp.style.visibility = "visible";
-    weather.style.visibility = "visible";
-    advise.style.visibility = "visible";
-    load.style.visibility = 'hidden'
-  }, 4000);
+    top.style = "opacity: 1";
+    temp.style = "opacity: 1";
+    weather.style = "opacity: 1";
+    advise.style = "opacity: 1";
+    load.style = "opacity: 0";
+  }, 3500);
 };
 
 const renderData = (data, message) => {
