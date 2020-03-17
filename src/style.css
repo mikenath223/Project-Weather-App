@@ -54,11 +54,12 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  max-width: 320px;
-  margin: 5 auto;
+  margin: 5;
+  align-self: center;
 }
 
 .advise > p {
+  margin-left: 10px;
   font-size: 1.3em;
 }
 
@@ -67,6 +68,25 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+}
+
+.map-info {
+  position: absolute;
+  top: 80%;
+  left: 25%;
+  z-index: 5;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(19, 2, 39);
+  color: #fff;
+  text-align: center;
+}
+
+.map-info:after {
+  content: "";
+  border-top: 60px solid rgb(19, 2, 39);
+  position: absolute;
+  top: 50px;
 }
 
 .info-wrap {
