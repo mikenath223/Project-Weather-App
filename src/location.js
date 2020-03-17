@@ -1,19 +1,10 @@
-import animeSearch from "./dom-interface";
-import { makeRequest, googleMaps } from "./handler";
-
-// const pinPlacer = (coords,map) => {
-//   // var myLatLng = {lat: -25.363, lng: 131.044};
-  
-//   new map.Marker({
-//     position: coords,
-//     map: map
-//   });
-// };
+import animeSearch from './dom-interface';
+import { makeRequest, googleMaps } from './handler';
 
 const showPosition = position => {
   const lat = position.coords.latitude;
   const long = position.coords.longitude;
-  makeRequest(`${lat} ${long}`, "location", true);
+  makeRequest(`${lat} ${long}`, 'location', true);
 };
 
 const showError = error => {

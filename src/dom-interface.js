@@ -1,103 +1,102 @@
-import { googleMaps } from "./location";
-import makeRequest from "./handler";
+import makeRequest from './handler';
 
-const countries = require("i18n-iso-countries");
-countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
+const countries = require('i18n-iso-countries');
+countries.registerLocale(require('i18n-iso-countries/langs/en.json'));
 
 const selectQuery = query => document.querySelector(query);
-const searchIcon = selectQuery(".icon-wrap");
+const searchIcon = selectQuery('.icon-wrap');
 
 const iconSwitch = weather => {
-  const icon = selectQuery(".wi");
-  const weatherDesc = selectQuery(".weather-desc");
+  const icon = selectQuery('.wi');
+  const weatherDesc = selectQuery('.weather-desc');
   icon.classList = `wi wi-owm-${weather.id}`;
   weatherDesc.textContent = weather.description;
 };
 
 const checkWeather = data => {
-  const weatherIcon = selectQuery(".umbrella");
-  const advise = selectQuery(".advise>p");
+  const weatherIcon = selectQuery('.umbrella');
+  const advise = selectQuery('.advise>p');
   if (!/cloud/.test(data)) {
-    weatherIcon.src = "../src/assets/fun.png";
-    advise.textContent = "Go have fun.";
+    weatherIcon.src = '../src/assets/fun.png';
+    advise.textContent = 'Go have fun.';
   }
 };
 
 const getInput = () => {
-  const searchIcon = selectQuery(".icon-wrap");
-  const input = selectQuery(".search");
-  searchIcon.addEventListener("click", () => {
+  const searchIcon = selectQuery('.icon-wrap');
+  const input = selectQuery('.search');
+  searchIcon.addEventListener('click', () => {
     const query = input.value;
     const len = query.length;
     if (len > 3 && len <= 15) {
-      makeRequest(query, "");
+      makeRequest(query, '');
     }
-    return "";
+    return '';
   });
-  input.onclick = () => searchIcon.classList.remove("vibrate");
-  return "";
+  input.onclick = () => searchIcon.classList.remove('vibrate');
+  return '';
 };
 
 const animeSearch = () => {
-  searchIcon.classList.add("vibrate");
+  searchIcon.classList.add('vibrate');
 };
 
 const load = () => {
-  const date = selectQuery(".date");
+  const date = selectQuery('.date');
 
   let currentDate = new Date();
   currentDate = currentDate
     .toLocaleString(undefined, {
-      hour: "2-digit",
-      minute: "2-digit",
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric"
+      hour: '2-digit',
+      minute: '2-digit',
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
     })
-    .split(",");
+    .split(',');
 
   date.innerHTML = `
   ${currentDate[3]} ${currentDate[0].toUpperCase()}, <br> <span class="day"> ${
-    currentDate[1]
-  } ${currentDate[2]}</span> 
+  currentDate[1]
+} ${currentDate[2]}</span> 
   `;
 };
 
 const showCountry = (query, city) => {
-  const location = selectQuery(".location");
+  const location = selectQuery('.location');
   let quest;
-  if (query === "US") quest = "USA";
-  location.textContent = `${city || "Unknown"}, ${quest ||
-    countries.getName(query, "en") ||
-    " Location"}`;
+  if (query === 'US') quest = 'USA';
+  location.textContent = `${city || 'Unknown'}, ${quest
+    || countries.getName(query, 'en')
+    || ' Location'}`;
 };
 
 const switchLoader = () => {
-  const top = selectQuery(".top-ad");
-  const temp = selectQuery(".temp");
-  const weather = selectQuery(".weather-more");
-  const advise = selectQuery(".advise");
-  const load = selectQuery('.load-wrap')
-  top.style = "opacity: 0";
-  temp.style = "opacity: 0";
-  weather.style = "opacity: 0";
-  advise.style =  "opacity: 0";
-  load.style = "opacity: 1";
+  const top = selectQuery('.top-ad');
+  const temp = selectQuery('.temp');
+  const weather = selectQuery('.weather-more');
+  const advise = selectQuery('.advise');
+  const load = selectQuery('.load-wrap');
+  top.style = 'opacity: 0';
+  temp.style = 'opacity: 0';
+  weather.style = 'opacity: 0';
+  advise.style = 'opacity: 0';
+  load.style = 'opacity: 1';
 
   setTimeout(() => {
-    top.style = "opacity: 1";
-    temp.style = "opacity: 1";
-    weather.style = "opacity: 1";
-    advise.style = "opacity: 1";
-    load.style = "opacity: 0";
+    top.style = 'opacity: 1';
+    temp.style = 'opacity: 1';
+    weather.style = 'opacity: 1';
+    advise.style = 'opacity: 1';
+    load.style = 'opacity: 0';
   }, 3500);
 };
 
 const renderData = (data, message) => {
-  const tempElem = selectQuery(".temp-h1");
+  const tempElem = selectQuery('.temp-h1');
   if (!data) {
-    tempElem.style.fontSize = "1em";
+    tempElem.style.fontSize = '1em';
     tempElem.textContent = message;
   }
   switchLoader();
@@ -117,18 +116,18 @@ const renderData = (data, message) => {
   const wind = data.wind.speed;
   const switchTemp = document.querySelector('input[type="checkbox"]');
 
-  const feelsElem = selectQuery(".feels-score");
+  const feelsElem = selectQuery('.feels-score');
   const toCelsius = (tempElem, temp, Feels) => {
     tempElem.textContent = temp;
-    document.body.style.setProperty("--farendisplay", "none");
-    document.body.style.setProperty("--celdisplay", "initial");
+    document.body.style.setProperty('--farendisplay', 'none');
+    document.body.style.setProperty('--celdisplay', 'initial');
     feelsElem.innerHTML = `${Feels}<span class="togg">C</span>`;
   };
 
   const toFaren = (tempElem, newTemp, like) => {
     tempElem.textContent = newTemp;
-    document.body.style.setProperty("--celdisplay", "none");
-    document.body.style.setProperty("--farendisplay", "initial");
+    document.body.style.setProperty('--celdisplay', 'none');
+    document.body.style.setProperty('--farendisplay', 'initial');
     feelsElem.innerHTML = `${like}<span class="togg">F</span>`;
   };
 
@@ -139,13 +138,13 @@ const renderData = (data, message) => {
   }
 
   showCountry(country, city);
-  tempElem.style.fontSize = "8em";
+  tempElem.style.fontSize = '8em';
 
   iconSwitch(data.weather[0]);
-  selectQuery(".humid-score").textContent = `${humidity}%`;
-  selectQuery(".wind-score").textContent = `${wind}mph`;
+  selectQuery('.humid-score').textContent = `${humidity}%`;
+  selectQuery('.wind-score').textContent = `${wind}mph`;
 
-  switchTemp.addEventListener("change", e => {
+  switchTemp.addEventListener('change', e => {
     if (e.target.checked) {
       toFaren(tempElem, newTemp, newFeels);
     } else {
@@ -155,4 +154,6 @@ const renderData = (data, message) => {
   checkWeather(data.weather[0].description);
 };
 
-export { animeSearch, load, showCountry, renderData, getInput };
+export {
+  animeSearch, load, showCountry, renderData, getInput,
+};
