@@ -153,7 +153,6 @@ const renderData = (data, message) => {
     }
   });
   checkWeather(data.weather[0].description);
-  googleMaps(data.coord.lat, data.coord.lon);
 };
 
 export { animeSearch, load, showCountry, renderData, getInput };
