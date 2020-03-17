@@ -1,8 +1,5 @@
 const makeRequest = async (query, check) => {
   const key = process.env.OPEN_WEATHER_API_KEY;
-  console.log("key", key);
-  console.log("hello");
-
   let strQuery;
 
   switch (check) {

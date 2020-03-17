@@ -11,19 +11,9 @@ const showPosition = position => {
   const lat = position.coords.latitude;
   const long = position.coords.longitude;
   // makeRequest(`${lat} ${long}`, "location");
-  // let img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_KEY";
   console.log(process.env.GOOGLE_MAP_API_KEY);
-  
-  // document.getElementById("mapholder").innerHTML =
-  //   "<img src='" + img_url + "'>";
-  const mapElem = selectQuery("#map");
-  const loadGoogleMapApi = require("load-google-maps-api");
-  loadGoogleMapApi({ key: process.env.GOOGLE_MAP_API_KEY }).then(map => {
-    new map.Map(mapElem, {
-      center: { lat: lat, lng: long },
-      zoom: 14
-    });
-  });
+
+  googleMaps(lat, long);
 
   return;
 };
@@ -32,6 +22,26 @@ const showError = error => {
   if (error.PERMISSION_DENIED) {
     animeSearch();
   }
+};
+
+const googleMaps = (lat, long) => {
+  const mapElem = selectQuery("#map");
+  const loadGoogleMapApi = require("load-google-maps-api");
+  loadGoogleMapApi({ key: process.env.GOOGLE_MAP_API_KEY }).then(map => {
+    let mapCreated = new map.Map(mapElem, {
+      center: { lat: lat, lng: long },
+      zoom: 7
+    });
+    mapCreated.addListener("click", function(e) {
+      console.log(e.latLng.lat());
+      var marker = new map.Marker({
+        position: e.latLng,
+        map: mapCreated
+      });
+      mapCreated.panTo(e.latLng);
+      // makeRequest(`${e.latLng.lat()} ${e.latLng.lng()}`, "location");
+    });
+  });
 };
 
 export default getLocation;

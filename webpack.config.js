@@ -8,7 +8,12 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist")
   },
-  plugins: [new webpack.EnvironmentPlugin(["OPEN_WEATHER_API_KEY", "GOOGLE_MAP_API_KEY"])],
+  plugins: [
+    new webpack.EnvironmentPlugin([
+      "OPEN_WEATHER_API_KEY",
+      "GOOGLE_MAP_API_KEY"
+    ])
+  ],
   module: {
     rules: [
       {
@@ -28,6 +33,10 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
+        use: ["file-loader"]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ["file-loader"]
       }
     ]

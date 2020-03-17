@@ -42,13 +42,17 @@ const load = () => {
   `;
 };
 
-const showCountry = () => {
+const showCountry = (query, city) => {
   const location = selectQuery('.location');
   let countries = require("i18n-iso-countries");
   countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
-  console.log(countries.getName('US', 'en'));
+  let quest;
+  if (query == 'US') quest = 'USA';
+  location.textContent = `${city}, ${quest || countries.getName(query, 'en')}`;
 }
 
+// const renderData = (data) => {
+//   data.
+// }
 
 export { getInput, animeSearch, load, showCountry, selectQuery };
-
