@@ -1,5 +1,5 @@
 import { animeSearch } from './dom-interface';
-// import { googleMaps } from './handler';
+import { googleMaps } from './handler';
 
 const showPosition = position => {
   const lat = position.coords.latitude;

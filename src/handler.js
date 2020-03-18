@@ -65,4 +65,4 @@ const googleMaps = (lat, long, request) => {
   if (request === true) makeRequest(`${lat} ${long}`, 'location', 'addpoint');
 };
 
-// export { googleMaps, makeRequest };
+export { googleMaps, makeRequest };
