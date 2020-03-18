@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project Weather App</title>
+</head>
+
+<body>
+  <main class="main-container">
+    <section class="container">
+      <section class="left-sect">
+        <h1 class="logo">weatherGuard</h1>
+        <div class="info-wrap">
+          <section class="advise-weather">
+
+            <div class="top-ad">
+              <p class="location">New York, USA</p>
+              <div class='toggle'>
+                <div class='theme-switch-wrapper'>
+                  <label class='theme-switch' for='checkbox'>
+                    <input id='checkbox' type='checkbox'>
+                    <div class='slider round'><span class="togg">C</span><span class="togg">F</span></div>
+                  </label>
+                </div>
+              </div>
+              <p class="date"></p>
+            </div>
+            <hr>
+
+            <div class="weather-info">
+              <div class="temp">
+                <div class="icon-desc">
+                  <span class="weather-desc"></span>
+                  <i class="wi wi-day-sunny"></i>
+                </div>
+                <h1 class="temp-h1">You can search a location or simply click anywhere on the map to get weather info.
+                </h1>
+                <p class="cel">C</p>
+                <p class="faren">F</p>
+              </div>
+
+              <div class="advise">
+                <img src="" alt="umbrella" class="umbrella">
+                <p></p>
+              </div>
+              <hr>
+
+              <div class="weather-more">
+                <div class="humid-info">
+                  <p>Humidity</p>
+                  <div class="humid">
+                    <img src="../src/assets/humid.png" alt="humid" class="humid">
+                    <span class="humid-score"></span>
+                  </div>
+                </div>
+
+                <div class="feels-info">
+                  <p>Feels like</p>
+                  <div class="humid">
+                    <!-- <img src="../src/assets/humid.png" alt="humid" class="humid"> -->
+                    <span class="feels-score"></span>
+                  </div>
+                </div>
+
+                <div class="wind-info">
+                  <p>Wind Speed</p>
+                  <div class="wind-speed">
+                    <img src="../src/assets/wind.png" alt="wind">
+                    <span class="wind-score"></span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="load-wrap">
+          <h3>Loading</h3>
+          <div class="loader"></div>
+        </div>
+
+        <div class="map-info">
+          <p>Click any location on the map to display weather info</p>
+        </div>
+
+      </section>
+
+      <aside class="aside">
+        <header class="search-location">
+          <input type="text" name="location" id="location" placeholder="Enter location" class="search" maxlength="15">
+          <div class="icon-wrap" data-key="Enter">
+            <img src="../src/assets/search.png" alt="search" class="search-icon">
+          </div>
+        </header>
+        <hr>
+        <div class="map" id="map">
+
+        </div>
+      </aside>
+    </section>
+
+  </main>
+  <script src="./bundle.js"></script>
+</body>
+
+</html>
