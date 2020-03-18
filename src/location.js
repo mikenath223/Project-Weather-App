@@ -1,5 +1,5 @@
-import animeSearch from './dom-interface';
-import googleMaps from './handler';
+import { animeSearch } from './dom-interface';
+import { googleMaps } from './handler';
 
 const showPosition = position => {
   const lat = position.coords.latitude;
@@ -10,7 +10,7 @@ const showPosition = position => {
 const showError = error => {
   if (error.PERMISSION_DENIED) {
     animeSearch();
-    googleMaps(37, -95);
+    googleMaps(37, -95, true);
   }
 };
 

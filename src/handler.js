@@ -6,7 +6,7 @@ let mapObj;
 const loadGoogleMapApi = require('load-google-maps-api');
 
 const selectQuery = query => document.querySelector(query);
-const makeRequest = async (query, check) => {
+const makeRequest = async (query, check, fromMap) => {
   const key = process.env.OPEN_WEATHER_API_KEY;
   let strQuery;
 
@@ -27,15 +27,18 @@ const makeRequest = async (query, check) => {
     });
     const data = await response.json();
     renderData(data);
-    new mapObj.Marker({
-      position: { lat: data.coord.lat, lng: data.coord.lon },
-      map: newMap,
-    });
-    newMap.panTo({ lat: data.coord.lat, lng: data.coord.lon });
+    if (fromMap === 'addpoint') {
+      new mapObj.Marker({
+        position: { lat: +data.coord.lat, lng: +data.coord.lon },
+        map: newMap,
+      });
+      newMap.panTo({ lat: data.coord.lat, lng: data.coord.lon });
+    }
   } catch (error) {
     renderData(false, error.message);
   }
 };
+
 
 const googleMaps = (lat, long, request) => {
   const mapElem = selectQuery('#map');
@@ -55,11 +58,12 @@ const googleMaps = (lat, long, request) => {
     newMap = mapCreated;
     mapCreated.addListener('click', e => {
       markMap(e.latLng);
-      makeRequest(`${e.latLng.lat()} ${e.latLng.lng()}`, 'location');
+
+      makeRequest(`${e.latLng.lat()} ${e.latLng.lng()}`, 'location', '');
       mapCreated.panTo(e.latLng);
     });
   });
-  if (request === true) makeRequest(`${lat} ${long}`, 'location');
+  if (request === true) makeRequest(`${lat} ${long}`, 'location', 'addpoint');
 };
 
-export default googleMaps;
+export { googleMaps, makeRequest };

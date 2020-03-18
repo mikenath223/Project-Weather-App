@@ -25,6 +25,8 @@ module.exports = {
           plugins: ['@babel/plugin-transform-async-to-generator'],
         },
       },
+    ],
+    rules: [
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],

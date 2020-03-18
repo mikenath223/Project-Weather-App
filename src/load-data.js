@@ -13,9 +13,12 @@ const iconSwitch = weather => {
 const checkWeather = data => {
   const weatherIcon = selectQuery('.umbrella');
   const advise = selectQuery('.advise>p');
-  if (!/cloud/.test(data)) {
+  if (!/cloud|rain/.test(data)) {
     weatherIcon.src = '../src/assets/fun.png';
     advise.textContent = 'Go have fun.';
+  } else {
+    weatherIcon.src = '../src/assets/umbrella.png';
+    advise.textContent = 'You might get wet out there.';
   }
 };
 
