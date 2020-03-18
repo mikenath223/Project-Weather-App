@@ -12,10 +12,10 @@ const makeRequest = async (query, check, fromMap) => {
   switch (check) {
     case 'location':
       query = query.split(' ');
-      strQuery = `http://api.openweathermap.org/data/2.5/weather?lat=${query[0]}&lon=${query[1]}&units=metric&APPID=3227974f4ec9644ec0f1cae6e61af58b`;
+      strQuery = `https://api.openweathermap.org/data/2.5/weather?lat=${query[0]}&lon=${query[1]}&units=metric&APPID=3227974f4ec9644ec0f1cae6e61af58b`;
       break;
     default:
-      strQuery = `http://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=3227974f4ec9644ec0f1cae6e61af58b`;
+      strQuery = `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=3227974f4ec9644ec0f1cae6e61af58b`;
       break;
   }
   if (!strQuery) return;
