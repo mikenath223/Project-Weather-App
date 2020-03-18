@@ -1,3 +1,5 @@
+import Umbrella from '../src/assets/umbrella.png';
+import Fun from '../src/assets/fun.png';
 
 const selectQuery = query => document.querySelector(query);
 const countries = require('i18n-iso-countries');
@@ -14,10 +16,10 @@ const checkWeather = data => {
   const weatherIcon = selectQuery('.umbrella');
   const advise = selectQuery('.advise>p');
   if (!/cloud|rain/.test(data)) {
-    weatherIcon.src = '../src/assets/fun.png';
+    weatherIcon.src = Fun;
     advise.textContent = 'Go have fun.';
   } else {
-    weatherIcon.src = '../src/assets/umbrella.png';
+    weatherIcon.src = Umbrella;
     advise.textContent = 'You might get wet out there.';
   }
 };
