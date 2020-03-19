@@ -1,5 +1,9 @@
-import Umbrella from '../src/assets/umbrella.png';
-import Fun from '../src/assets/fun.png';
+import Umbrella from './assets/umbrella.png';
+import Fun from './assets/fun.png';
+import BgStorm from './assets/wall1.jpg';
+import BgFun from './assets/wall2.jpg';
+import BgClear from './assets/scenic.jpg';
+import BgClouds from './assets/gloomy-clouds.jpg';
 
 const selectQuery = query => document.querySelector(query);
 const countries = require('i18n-iso-countries');
@@ -15,12 +19,21 @@ const iconSwitch = weather => {
 const checkWeather = data => {
   const weatherIcon = selectQuery('.umbrella');
   const advise = selectQuery('.advise>p');
-  if (!/cloud|rain/.test(data)) {
+  const container = selectQuery('.container');
+  if (!/cloud|rain|storm/.test(data)) {
     weatherIcon.src = Fun;
     advise.textContent = 'Go have fun.';
+    container.setAttribute('style', `background-image: url(${BgFun})`);
+  } else if (/clear/.test(data)) {
+    container.setAttribute('style', `background-image: url(${BgClear})`);
+  } else if (/storm/.test(data)) {
+    container.setAttribute('style', `background-image: url(${BgStorm})`);
+    weatherIcon.src = Umbrella;
+    advise.textContent = 'You might get wet out there.';
   } else {
     weatherIcon.src = Umbrella;
     advise.textContent = 'You might get wet out there.';
+    container.setAttribute('style', `background-image: url(${BgClouds})`);
   }
 };
 
