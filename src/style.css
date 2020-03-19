@@ -391,7 +391,7 @@ input:checked+.slider:before {
 
 .cel, .faren {
   font-size: 95px;
-  margin: 0 0 10px 40px;
+  margin: 0 0 10px 20px;
   align-self: flex-end;
 }
 
@@ -404,7 +404,7 @@ input:checked+.slider:before {
 }
 
 .togg:first-child {
-  margin: 10px 40px 0 17px;
+  margin: 10px 40px 0 7px;
 }
 
 .togg::after {
