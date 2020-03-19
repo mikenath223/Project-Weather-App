@@ -11,6 +11,13 @@
 <body>
   <main class="main-container">
     <section class="container">
+      <div class="small-screen-wrap small-screen">
+        <h1 class="logo small-screen">weatherGuard</h1>
+        <div class="map-info small-screen">
+          <p>Click any location on the map to display weather info</p>
+        </div>
+      </div>
+
       <section class="left-sect">
         <h1 class="logo large-screen">weatherGuard</h1>
         <div class="info-wrap">
@@ -18,7 +25,7 @@
 
             <div class="top-ad">
               <p class="location">New York, USA</p>
-              <div class='toggle'>
+              <div class='toggle large-screen'>
                 <div class='theme-switch-wrapper'>
                   <label class='theme-switch' for='checkbox'>
                     <input id='checkbox' type='checkbox'>
@@ -36,18 +43,23 @@
                   <span class="weather-desc"></span>
                   <i class="wi wi-day-sunny"></i>
                 </div>
-                <h1 class="temp-h1">You can search a location or simply click anywhere on the map to get weather info.
-                </h1>
-                <p class="cel">C</p>
-                <p class="faren">F</p>
+                <h1 class="temp-h1"></h1>
+                <div class='toggle small-screen'>
+                  <div class='theme-switch-wrapper'>
+                    <label class='theme-switch' for='checkbox'>
+                      <input id='checkbox' type='checkbox'>
+                      <div class='slider round'><span class="togg">C</span><span class="togg">F</span></div>
+                    </label>
+                  </div>
+                </div>
               </div>
 
               <div class="advise">
-                <img src="" alt="umbrella" class="umbrella">
+                <img src="./assets/umbrella.png" alt="umbrella" class="umbrella">
                 <p></p>
               </div>
-              <hr>
 
+              <hr>
               <div class="weather-more">
                 <div class="humid-info">
                   <p>Humidity</p>
@@ -96,9 +108,7 @@
           </div>
         </header>
         <hr>
-        <div class="map" id="map">
-
-        </div>
+        <div class="map" id="map"></div>
       </aside>
     </section>
 

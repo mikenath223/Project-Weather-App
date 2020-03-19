@@ -59,14 +59,14 @@ const switchLoader = () => {
 };
 
 const toCelsius = (tempElem, temp, Feels, feelsElem) => {
-  tempElem.textContent = temp;
+  tempElem.innerHTML = `${temp} <span class="cel">C</span>`;
   document.body.style.setProperty('--farendisplay', 'none');
   document.body.style.setProperty('--celdisplay', 'initial');
-  feelsElem.innerHTML = `${Feels}<span class="togg">C</span>`;
+  feelsElem.innerHTML = `${Feels}<span class="togg feels-temp">C</span>`;
 };
 
 const toFaren = (tempElem, newTemp, like, feelsElem) => {
-  tempElem.textContent = newTemp;
+  tempElem.innerHTML = `${newTemp} <span class="faren">F</span>`;
   document.body.style.setProperty('--celdisplay', 'none');
   document.body.style.setProperty('--farendisplay', 'initial');
   feelsElem.innerHTML = `${like}<span class="togg">F</span>`;
@@ -84,8 +84,8 @@ const showCountry = (query, city) => {
 const renderData = (data, message) => {
   const tempElem = selectQuery('.temp-h1');
   if (!data) {
-    tempElem.style.fontSize = '1em';
     tempElem.textContent = message;
+    tempElem.style.fontSize = "18px";
   }
   switchLoader();
 
@@ -113,8 +113,6 @@ const renderData = (data, message) => {
   }
 
   showCountry(country, city);
-  tempElem.style.fontSize = '8em';
-
   iconSwitch(data.weather[0]);
   selectQuery('.humid-score').textContent = `${humidity}%`;
   selectQuery('.wind-score').textContent = `${wind}mph`;
