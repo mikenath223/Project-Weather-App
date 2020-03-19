@@ -34,7 +34,7 @@ const makeRequest = async (query, check, fromMap) => {
       newMap.panTo({ lat: data.coord.lat, lng: data.coord.lon });
     }
   } catch (error) {
-    renderData(false, error.message);
+    selectQuery('.map-info').textContent = error.message
   }
 };
 

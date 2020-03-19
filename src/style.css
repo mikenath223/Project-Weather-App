@@ -302,10 +302,15 @@ body {
 .theme-switch {
   display: inline-block;
   position: relative;
+  text-align: center;
 }
 
 .theme-switch input {
+  margin-left: -95px;
+  margin-top: -30px;
   display: none;
+  width: 100px;
+  height: 48px;
 }
 
 .slider {
@@ -359,7 +364,6 @@ input:checked+.slider:before {
 
 .cel {
   display: var(--celdisplay);
-  /* margin-right: 20px; */
 }
 
 .faren {
@@ -374,7 +378,7 @@ input:checked+.slider:before {
   color: #000;
   z-index: 7;
   font-size: 0.6em;
-  right: 50px;
+  right: 40px;
 }
 
 .cel::after {
@@ -533,6 +537,31 @@ input:checked+.slider:before {
   margin: 0 0 0 10px;
 }
 
+.feels-score .togg {
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 769px) {
+  .top-ad .date {
+    margin-left: 80px;
+  }
+  .top-ad .location {
+    margin-left: -10px;
+  }
+  .top-ad>.toggle {
+    margin-left: 30px;
+  }
+  .temp-h1 {
+    margin-top: 13px;
+  }
+  .temp-h1 .cel, .temp-h1 .faren {
+    margin-left: 5px;
+  }
+  .temp-h1 .cel::after, .temp-h1 .faren::after {
+    right: 15px;
+  }
+}
+
 @media only screen and (max-width: 750px) {
   .large-screen {
     display: none;
@@ -547,6 +576,14 @@ input:checked+.slider:before {
     margin: 0 auto;
     width: 90%;
   }
+  .top-ad>.location {
+    font-size: 22px;
+  }
+  .left-sect .top-ad .location, .left-sect .top-ad .date {
+    margin-right: 0;
+    margin-left: 0;
+    font-size: 18px;
+  }
   .small-screen-wrap {
     display: flex;
     flex-direction: column;
@@ -556,7 +593,7 @@ input:checked+.slider:before {
     font-size: 40px;
   }
   .container {
-    grid-template: 200px 300px 630px / 1fr;
+    grid-template: 240px 350px 640px / 1fr;
     row-gap: 10px;
     gap: 10px 0;
     max-width: 100vw;
@@ -585,23 +622,17 @@ input:checked+.slider:before {
     margin: 0;
     max-width: 95%;
   }
-  .theme-switch .slider .togg {
-    font-size: 20px;
-  }
   .togg:first-child {
     margin-left: 10px;
   }
   #map {
     height: 300px;
   }
-  .slider {
-    width: 100px;
-  }
   .temp>.temp-h1 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-left: 20px;
+    margin: 0 0 0 20px;
   }
   .cel, .faren {
     margin: 0 0 0 20px;
@@ -621,6 +652,11 @@ input:checked+.slider:before {
     width: 30px;
     height: 30px;
   }
+  .icon-desc {
+    margin-left: -20px;
+    text-align: center;
+    font-size: 18px;
+  }
   .left-sect .top-ad * {
     font-size: 16px;
   }
@@ -635,7 +671,7 @@ input:checked+.slider:before {
   }
   .advise-weather {
     width: 95%;
-    height: 600px;
+    height: 640px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -644,19 +680,38 @@ input:checked+.slider:before {
     margin-right: 50px;
   }
   .temp {
-    margin: 10px 0;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-around;
+    height: 180px;
+    margin-bottom: 10px;
   }
   .weather-more, .weather-info {
     margin: 0;
   }
+  .advise {
+    margin: 8px 0;
+  }
+  .weather-info {
+    width: 100%;
+  }
   .load-wrap {
     top: 25%;
-    left: 20%;
+    left: 26%;
   }
   .advise-weather {
     display: flex;
+    width: 100%;
+    margin-right: 0;
     flex-direction: column;
     justify-content: space-around;
+  }
+  .theme-switch {
+    margin-left: -30px;
+  }
+  .humid-info {
+    margin-top: 5px;
   }
   .toggle {
     margin: 10px 0;
