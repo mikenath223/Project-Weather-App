@@ -12,10 +12,10 @@ const makeRequest = async (query, check, fromMap) => {
   switch (check) {
     case 'location':
       query = query.split(' ');
-      strQuery = `https://api.openweathermap.org/data/2.5/weather?lat=${query[0]}&lon=${query[1]}&units=metric&APPID=3227974f4ec9644ec0f1cae6e61af58b`;
+      strQuery = `https://api.openweathermap.org/data/2.5/weather?lat=${query[0]}&lon=${query[1]}&units=metric&APPID=${process.env.OPEN_WEATHER_API_KEY}`;
       break;
     default:
-      strQuery = `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=3227974f4ec9644ec0f1cae6e61af58b`;
+      strQuery = `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=${process.env.OPEN_WEATHER_API_KEY}`;
       break;
   }
   if (!strQuery) return;
@@ -45,7 +45,7 @@ const makeRequest = async (query, check, fromMap) => {
 
 const googleMaps = (lat, long, request) => {
   const mapElem = selectQuery('#map');
-  loadGoogleMapApi({ key: 'AIzaSyCw8KDvLHXpm6XHDleb6hL5_yesNo2Ab9U' }).then(map => {
+  loadGoogleMapApi({ key: `${process.env.GOOGLE_MAP_API_KEY}` }).then(map => {
     mapObj = map;
     const mapCreated = new map.Map(mapElem, {
       center: { lat, lng: long },
