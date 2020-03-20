@@ -3,7 +3,7 @@ require('dotenv').config();
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './babel-lib/index.js',
+  entry: './src/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
