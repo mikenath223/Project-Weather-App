@@ -25,6 +25,7 @@ const makeRequest = async (query, check, fromMap) => {
       mode: 'cors',
     });
     const data = await response.json();
+    if (!data) return;
     renderData(data);
     if (fromMap === 'addpoint' && mapObj !== undefined) {
       new mapObj.Marker({
@@ -33,8 +34,11 @@ const makeRequest = async (query, check, fromMap) => {
       });
       newMap.panTo({ lat: data.coord.lat, lng: data.coord.lon });
     }
+    selectQuery('.map-info>p').textContent = 'Click any location on the map to display weather info';
   } catch (error) {
-    selectQuery('.map-info').textContent = error.message
+    if (error) {
+      selectQuery('.map-info>p').textContent = 'Sorry. There was an error getting your result';
+    }
   }
 };
 
