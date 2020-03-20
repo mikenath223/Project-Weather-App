@@ -85,7 +85,7 @@ const renderData = (data, message) => {
   const tempElem = selectQuery('.temp-h1');
   if (!data) {
     tempElem.textContent = message;
-    tempElem.style.fontSize = "18px";
+    tempElem.style.fontSize = '18px';
   }
   switchLoader();
 

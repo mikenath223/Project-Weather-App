@@ -174,7 +174,7 @@ body {
 .search::-moz-placeholder {
   font-size: 25px;
   padding-left: 10px;
-  color: rgb(129, 13, 9);
+  color: rgba(1, 12, 10, 0.5);
 }
 
 .search-location {
@@ -303,14 +303,11 @@ body {
   display: inline-block;
   position: relative;
   text-align: center;
+  margin: 0;
 }
 
 .theme-switch input {
-  margin-left: -95px;
-  margin-top: -30px;
-  display: none;
-  width: 100px;
-  height: 48px;
+  opacity: 0;
 }
 
 .slider {
@@ -322,7 +319,7 @@ body {
   left: -50px;
   position: absolute;
   right: 0;
-  top: -25px;
+  top: -15px;
   height: 48px;
   width: 110px;
   z-index: -5;
@@ -543,7 +540,8 @@ input:checked+.slider:before {
 
 @media only screen and (max-width: 769px) {
   .top-ad .date {
-    margin-left: 80px;
+    margin-left: 100px;
+    text-align: center;
   }
   .top-ad .location {
     margin-left: -10px;
@@ -560,9 +558,16 @@ input:checked+.slider:before {
   .temp-h1 .cel::after, .temp-h1 .faren::after {
     right: 15px;
   }
+  .slider {
+    left: 0;
+  }
 }
 
 @media only screen and (max-width: 750px) {
+  .slider {
+    position: relative;
+    left: 0;
+  }
   .large-screen {
     display: none;
   }
@@ -690,7 +695,7 @@ input:checked+.slider:before {
     flex-flow: column wrap;
     align-items: center;
     justify-content: space-around;
-    height: 200px;
+    height: 150px;
     margin-bottom: 10px;
   }
   .weather-more, .weather-info {
@@ -714,9 +719,9 @@ input:checked+.slider:before {
     justify-content: space-around;
   }
   .theme-switch {
-    width: max-content;
-    margin-bottom: 10px;
-    margin-left: 120px;
+    margin: 0 0 10px 0;
+    width: 100px;
+    height: 48px;
   }
   .humid-info {
     margin-top: 5px;
