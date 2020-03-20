@@ -286,6 +286,8 @@ body {
 
 .top-ad .date {
   font-size: 17px;
+  text-align: right;
+  width: 200px;
 }
 
 .temp {
