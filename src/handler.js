@@ -26,7 +26,7 @@ const makeRequest = async (query, check, fromMap) => {
     });
     const data = await response.json();
     renderData(data);
-    if (fromMap === 'addpoint') {
+    if (fromMap === 'addpoint' && mapObj !== undefined) {
       new mapObj.Marker({
         position: { lat: +data.coord.lat, lng: +data.coord.lon },
         map: newMap,
