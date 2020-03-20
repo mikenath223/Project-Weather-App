@@ -1,4 +1,3 @@
-# Project-Weather-App
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -11,7 +10,7 @@
 <br />
 <p align="center">
   <a href="https://www.microverse.org/">
-    <img src="src/microverse.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/microverse.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">
@@ -23,17 +22,18 @@
   </h3>
 
   <p align="center">
- A ToDo-List project for Microverse curriculum. Its also part of the <a href="https://www.theodinproject.com/courses/javascript/lessons/restaurant-page">Odin project curriculum.</a>
+ A Weather Forecast APP for Microverse curriculum. Its also part of the <a href="https://www.theodinproject.com/courses/javascript/lessons/weather-app">Odin project curriculum.</a>
     <br />
 
   </p>
 </p>
 
-This project involves dynamically generating page contents with javascript using module design pattern afforded by webpack module bundler.
+This project involves implementing aynchronous javascript via aync/await and Promises to build a weather forecase app from the openweather site API.
+It also implements the Googlemaps API to showcase locations.
 
 ## Snapshot
 
-<img src="src/restaurant-snapshot.gif" alt="screenshot" width="800" height="500">
+<img src="src/assets/weather-app.gif" alt="screenshot" width="800" height="500">
 
 # Validations
 
@@ -42,7 +42,7 @@ This project involves dynamically generating page contents with javascript using
 # Get Started
 
 -Download or clone this [repo here](https://github.com/mikenath223/Project-Weather-App).
--Install webpack and project dependencies.
+-Install webpack and project dependencies with `npm install`.
 -Run `npx webpack --mode=development`.
 -Open the `index.html` file.
 
@@ -50,7 +50,9 @@ This project involves dynamically generating page contents with javascript using
 
 This project was built with these tools:
 
-- JAVASCRIPT
+- JAVASCRIPT (Webpack, Babel)
+- OpenWeather API
+- GoogleMaps API
 - HTML
 - CSS3
 
@@ -62,13 +64,6 @@ This project was built with these tools:
 - Twitter: [@Michgolden_Nath](https://twitter.com/MichgoldenU)
 - Linkedin: [Ukeje Michgolden](https://https://www.linkedin.com/in/michgoldenukeje/)
   <br />
-  <br />
-
-**Alejandro Andres**
-
-- Github: [@mikenath223](https://github.com/mikenath223)
-- Twitter: [@Michgolden_Nath](https://twitter.com/MichgoldenU)
-- Linkedin: [Ukeje Michgolden](https://https://www.linkedin.com/in/michgoldenukeje/)
 
 # License
 

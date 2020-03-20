@@ -12,10 +12,10 @@ const makeRequest = async (query, check, fromMap) => {
   switch (check) {
     case 'location':
       query = query.split(' ');
-      strQuery = `http://api.openweathermap.org/data/2.5/weather?lat=${query[0]}&lon=${query[1]}&units=metric&APPID=3227974f4ec9644ec0f1cae6e61af58b`;
+      strQuery = `https://api.openweathermap.org/data/2.5/weather?lat=${query[0]}&lon=${query[1]}&units=metric&APPID=${process.env.OPEN_WEATHER_API_KEY}`;
       break;
     default:
-      strQuery = `http://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=3227974f4ec9644ec0f1cae6e61af58b`;
+      strQuery = `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=${process.env.OPEN_WEATHER_API_KEY}`;
       break;
   }
   if (!strQuery) return;
@@ -25,23 +25,27 @@ const makeRequest = async (query, check, fromMap) => {
       mode: 'cors',
     });
     const data = await response.json();
+    if (!data) return;
     renderData(data);
-    if (fromMap === 'addpoint') {
+    if (fromMap === 'addpoint' && mapObj !== undefined) {
       new mapObj.Marker({
         position: { lat: +data.coord.lat, lng: +data.coord.lon },
         map: newMap,
       });
       newMap.panTo({ lat: data.coord.lat, lng: data.coord.lon });
     }
+    selectQuery('.map-info>p').textContent = 'Click any location on the map to display weather info';
   } catch (error) {
-    renderData(false, error.message);
+    if (error) {
+      selectQuery('.map-info>p').textContent = 'Sorry. There was an error getting your result';
+    }
   }
 };
 
 
 const googleMaps = (lat, long, request) => {
   const mapElem = selectQuery('#map');
-  loadGoogleMapApi({ key: 'AIzaSyCw8KDvLHXpm6XHDleb6hL5_yesNo2Ab9U' }).then(map => {
+  loadGoogleMapApi({ key: `${process.env.GOOGLE_MAP_API_KEY}` }).then(map => {
     mapObj = map;
     const mapCreated = new map.Map(mapElem, {
       center: { lat, lng: long },

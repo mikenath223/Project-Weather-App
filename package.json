@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:watch": "npx webpack --mode=development --watch",
-    "start:dev": "npx webpack --mode=development",
-    "babel:build": "babel src -d lib"
+    "start:build": "npx webpack --mode=production",
+    "babel:build": "babel src -d babel-lib"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
     "dotenv": "^8.2.0",
     "i18n-iso-countries": "^5.1.0",
     "load-google-maps-api": "^2.0.2"

@@ -1,3 +1,9 @@
+import Umbrella from './assets/umbrella.png';
+import Fun from './assets/fun.png';
+import BgStorm from './assets/wall1.jpg';
+import BgFun from './assets/wall2.jpg';
+import BgClear from './assets/scenic.jpg';
+import BgClouds from './assets/gloomy-clouds.jpg';
 
 const selectQuery = query => document.querySelector(query);
 const countries = require('i18n-iso-countries');
@@ -13,12 +19,21 @@ const iconSwitch = weather => {
 const checkWeather = data => {
   const weatherIcon = selectQuery('.umbrella');
   const advise = selectQuery('.advise>p');
-  if (!/cloud|rain/.test(data)) {
-    weatherIcon.src = '../src/assets/fun.png';
+  const container = selectQuery('.container');
+  if (!/cloud|rain|storm/.test(data)) {
+    weatherIcon.src = Fun;
     advise.textContent = 'Go have fun.';
-  } else {
-    weatherIcon.src = '../src/assets/umbrella.png';
+    container.setAttribute('style', `background-image: url(${BgFun})`);
+  } else if (/clear/.test(data)) {
+    container.setAttribute('style', `background-image: url(${BgClear})`);
+  } else if (/storm/.test(data)) {
+    container.setAttribute('style', `background-image: url(${BgStorm})`);
+    weatherIcon.src = Umbrella;
     advise.textContent = 'You might get wet out there.';
+  } else {
+    weatherIcon.src = Umbrella;
+    advise.textContent = 'You might get wet out there.';
+    container.setAttribute('style', `background-image: url(${BgClouds})`);
   }
 };
 
@@ -44,14 +59,14 @@ const switchLoader = () => {
 };
 
 const toCelsius = (tempElem, temp, Feels, feelsElem) => {
-  tempElem.textContent = temp;
+  tempElem.innerHTML = `${temp} <span class="cel">C</span>`;
   document.body.style.setProperty('--farendisplay', 'none');
   document.body.style.setProperty('--celdisplay', 'initial');
-  feelsElem.innerHTML = `${Feels}<span class="togg">C</span>`;
+  feelsElem.innerHTML = `${Feels}<span class="togg feels-temp">C</span>`;
 };
 
 const toFaren = (tempElem, newTemp, like, feelsElem) => {
-  tempElem.textContent = newTemp;
+  tempElem.innerHTML = `${newTemp} <span class="faren">F</span>`;
   document.body.style.setProperty('--celdisplay', 'none');
   document.body.style.setProperty('--farendisplay', 'initial');
   feelsElem.innerHTML = `${like}<span class="togg">F</span>`;
@@ -69,8 +84,8 @@ const showCountry = (query, city) => {
 const renderData = (data, message) => {
   const tempElem = selectQuery('.temp-h1');
   if (!data) {
-    tempElem.style.fontSize = '1em';
     tempElem.textContent = message;
+    tempElem.style.fontSize = '18px';
   }
   switchLoader();
 
@@ -98,8 +113,6 @@ const renderData = (data, message) => {
   }
 
   showCountry(country, city);
-  tempElem.style.fontSize = '8em';
-
   iconSwitch(data.weather[0]);
   selectQuery('.humid-score').textContent = `${humidity}%`;
   selectQuery('.wind-score').textContent = `${wind}mph`;

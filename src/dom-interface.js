@@ -39,23 +39,11 @@ const animeSearch = () => {
 const load = () => {
   const date = selectQuery('.date');
 
-  let currentDate = new Date();
-  currentDate = currentDate
-    .toLocaleString(undefined, {
-      hour: '2-digit',
-      minute: '2-digit',
-      weekday: 'long',
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    })
-    .split(',');
-
-  date.innerHTML = `
-  ${currentDate[3]} ${currentDate[0].toUpperCase()}, <br> <span class="day"> ${
-  currentDate[1]
-} ${currentDate[2]}</span> 
-  `;
+  const currentDate = new Date().toString().slice(0, 33).replace(/\s/, ', ');
+  let time = currentDate.slice(17, 25).split(':');
+  const hour = time[0];
+  hour > 12 ? time = `${hour - 12}:${time[1]}:${time[2]}PM` : time = `${time.join(':')}AM`;
+  date.innerHTML = currentDate.replace(/\d+:\d+:\d+/, time);
 };
 
 
