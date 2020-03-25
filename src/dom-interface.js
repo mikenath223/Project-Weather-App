@@ -38,11 +38,11 @@ const animeSearch = () => {
 
 const load = () => {
   const date = selectQuery('.date');
-
   const currentDate = new Date().toString().slice(0, 33).replace(/\s/, ', ');
   let time = currentDate.slice(17, 25).split(':');
-  const hour = time[0];
-  hour > 12 ? time = `${hour - 12}:${time[1]}:${time[2]}PM` : time = `${time.join(':')}AM`;
+  let hour = time[0];
+  if (String(hour) == '00') hour = 12;
+  hour > 12 ? time = `${hour - 12}:${time[1]}:${time[2]}PM` : time = `${hour+':'+time[1]}AM`;
   date.innerHTML = currentDate.replace(/\d+:\d+:\d+/, time);
 };
 

@@ -87,7 +87,6 @@ const renderData = (data, message) => {
     tempElem.textContent = message;
     tempElem.style.fontSize = '18px';
   }
-  switchLoader();
 
   const mainData = data.main;
   const { feels_like: feelsLike } = mainData;
@@ -127,4 +126,4 @@ const renderData = (data, message) => {
   checkWeather(data.weather[0].description);
 };
 
-export default renderData;
+export { renderData, switchLoader };

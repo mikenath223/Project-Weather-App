@@ -41,7 +41,44 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   color: rgba(0, 0, 0, 0.1);
-  background-image: url(./assets/glossy-text.jpg);
+  background-image: url(./assets/grad.png);
+  animation: move 6s infinite linear;
+}
+
+@keyframes move {
+  from, to {
+    background-position-x: 0;
+  }
+  50% {
+    background-position-x: 300px;
+  }
+}
+
+@-webkit-keyframes move {
+  from, to {
+    background-position-x: 0;
+  }
+  50% {
+    background-position-x: 300px;
+  }
+}
+
+@-moz-keyframes move {
+  from, to {
+    background-position-x: 0;
+  }
+  50% {
+    background-position-x: 300px;
+  }
+}
+
+@-o-keyframes move {
+  from, to {
+    background-position-x: 0;
+  }
+  50% {
+    background-position-x: 300px;
+  }
 }
 
 .umbrella {
@@ -217,6 +254,7 @@ body {
   padding: 0;
   margin: 0 25px;
   font-family: 'Chewy', cursive;
+  animation: move 6s infinite linear;
 }
 
 .humid-info, .wind-info, .feels-info {
@@ -276,18 +314,24 @@ body {
   justify-content: space-evenly;
 }
 
-.top-ad p, .temp-h1, .same-font:not(last-child), .same-font p, .day, .cel, .faren {
+.top-ad p, .temp-h1, .same-font:not(last-child), .same-font p, .cel, .faren {
   background-clip: text;
   -webkit-background-clip: text;
   color: rgba(0, 0, 0, 0.1);
   background-position: 50% 380px;
-  background-image: url(./assets/dark-gloss.jpg);
+  background-image: url(./assets/gray21.jpg);
 }
 
 .top-ad .date {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
   text-align: right;
   width: 200px;
+}
+
+.top-ad .date, .top-ad .location {
+  background: none;
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .temp {
@@ -336,7 +380,7 @@ body {
   bottom: 5px;
   content: "";
   height: 38px;
-  left: 4px;
+  left: 8px;
   z-index: 5;
   position: absolute;
   transition: 0.4s;
@@ -362,10 +406,12 @@ input:checked+.slider:before {
 }
 
 .cel {
+  animation: move 6s infinite linear;
   display: var(--celdisplay);
 }
 
 .faren {
+  animation: move 6s infinite linear;
   margin-left: 10px;
   display: var(--farendisplay);
 }
@@ -374,7 +420,7 @@ input:checked+.slider:before {
   content: '0';
   position: absolute;
   top: -20px;
-  color: #000;
+  color: gray;
   z-index: 7;
   font-size: 0.6em;
   right: 40px;
@@ -641,10 +687,9 @@ input:checked+.slider:before {
     margin: 0 0 0 60px;
     width: max-content;
   }
-  
-.search::placeholder {
-  font-size: 20px;
-}
+  .search::placeholder {
+    font-size: 20px;
+  }
   .cel, .faren {
     margin: 0 0 0 20px;
     font-size: 15px;

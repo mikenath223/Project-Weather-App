@@ -1,17 +1,17 @@
-import renderData from './load-data';
+import { renderData, switchLoader } from "./load-data";
 
 let newMap;
 let mapObj;
 
-const loadGoogleMapApi = require('load-google-maps-api');
+const loadGoogleMapApi = require("load-google-maps-api");
 
 const selectQuery = query => document.querySelector(query);
 const makeRequest = async (query, check, fromMap) => {
   let strQuery;
 
   switch (check) {
-    case 'location':
-      query = query.split(' ');
+    case "location":
+      query = query.split(" ");
       strQuery = `https://api.openweathermap.org/data/2.5/weather?lat=${query[0]}&lon=${query[1]}&units=metric&APPID=${process.env.OPEN_WEATHER_API_KEY}`;
       break;
     default:
@@ -19,54 +19,61 @@ const makeRequest = async (query, check, fromMap) => {
       break;
   }
   if (!strQuery) return;
+  const warnElems = document.querySelectorAll(".logo");
 
   try {
     const response = await fetch(strQuery, {
-      mode: 'cors',
+      mode: "cors"
     });
-    const data = await response.json();
-    if (!data) return;
-    renderData(data);
-    if (fromMap === 'addpoint' && mapObj !== undefined) {
-      new mapObj.Marker({
-        position: { lat: +data.coord.lat, lng: +data.coord.lon },
-        map: newMap,
+    response
+      .json()
+      .then(data => {
+        if (!data) return;
+        renderData(data);
+        switchLoader();
+        warnElems.forEach(elem => (elem.textContent = "weatherGuard"));
+        if (fromMap === "addpoint" && mapObj !== undefined) {
+          new mapObj.Marker({
+            position: { lat: +data.coord.lat, lng: +data.coord.lon },
+            map: newMap
+          });
+          newMap.panTo({ lat: data.coord.lat, lng: data.coord.lon });
+        }
+      })
+      .catch(() => {
+        warnElems.forEach(elem => (elem.textContent = "Incorrect Input.💢"));
       });
-      newMap.panTo({ lat: data.coord.lat, lng: data.coord.lon });
-    }
-    selectQuery('.map-info>p').textContent = 'Click any location on the map to display weather info';
+
+    // selectQuery('.map-info>p').textContent = 'Click any location on the map to display weather info';
   } catch (error) {
-    if (error) {
-      selectQuery('.map-info>p').textContent = 'Sorry. There was an error getting your result';
-    }
+    // warnElems.forEach(elem => (elem.textContent = "Incorrect Input.💢"));
   }
 };
 
-
 const googleMaps = (lat, long, request) => {
-  const mapElem = selectQuery('#map');
+  const mapElem = selectQuery("#map");
   loadGoogleMapApi({ key: `${process.env.GOOGLE_MAP_API_KEY}` }).then(map => {
     mapObj = map;
     const mapCreated = new map.Map(mapElem, {
       center: { lat, lng: long },
-      zoom: 7,
+      zoom: 7
     });
     const markMap = pos => {
       new map.Marker({
         position: pos,
-        map: mapCreated,
+        map: mapCreated
       });
     };
     markMap({ lat, lng: long });
     newMap = mapCreated;
-    mapCreated.addListener('click', e => {
+    mapCreated.addListener("click", e => {
       markMap(e.latLng);
 
-      makeRequest(`${e.latLng.lat()} ${e.latLng.lng()}`, 'location', '');
+      makeRequest(`${e.latLng.lat()} ${e.latLng.lng()}`, "location", "");
       mapCreated.panTo(e.latLng);
     });
   });
-  if (request === true) makeRequest(`${lat} ${long}`, 'location', 'addpoint');
+  if (request === true) makeRequest(`${lat} ${long}`, "location", "addpoint");
 };
 
 export { googleMaps, makeRequest };
