@@ -37,27 +37,6 @@ const checkWeather = data => {
   }
 };
 
-const switchLoader = () => {
-  const top = selectQuery('.top-ad');
-  const temp = selectQuery('.temp');
-  const weather = selectQuery('.weather-more');
-  const advise = selectQuery('.advise');
-  const load = selectQuery('.load-wrap');
-  top.style = 'opacity: 0';
-  temp.style = 'opacity: 0';
-  weather.style = 'opacity: 0';
-  advise.style = 'opacity: 0';
-  load.style = 'opacity: 1';
-
-  setTimeout(() => {
-    top.style = 'opacity: 1';
-    temp.style = 'opacity: 1';
-    weather.style = 'opacity: 1';
-    advise.style = 'opacity: 1';
-    load.style = 'opacity: 0';
-  }, 3500);
-};
-
 const toCelsius = (tempElem, temp, Feels, feelsElem) => {
   tempElem.innerHTML = `${temp} <span class="cel">C</span>`;
   document.body.style.setProperty('--farendisplay', 'none');
@@ -126,4 +105,27 @@ const renderData = (data, message) => {
   checkWeather(data.weather[0].description);
 };
 
-export { renderData, switchLoader };
+const switchLoader = (data) => {
+  const top = selectQuery('.top-ad');
+  const temp = selectQuery('.temp');
+  const weather = selectQuery('.weather-more');
+  const advise = selectQuery('.advise');
+  const load = selectQuery('.load-wrap');
+  top.style = 'opacity: 0';
+  temp.style = 'opacity: 0';
+  weather.style = 'opacity: 0';
+  advise.style = 'opacity: 0';
+  load.style = 'opacity: 1';
+
+  setTimeout(() => {
+    top.style = 'opacity: 1';
+    temp.style = 'opacity: 1';
+    weather.style = 'opacity: 1';
+    advise.style = 'opacity: 1';
+    load.style = 'opacity: 0';
+  renderData(data)
+  }, 3500);
+};
+
+
+export default switchLoader;

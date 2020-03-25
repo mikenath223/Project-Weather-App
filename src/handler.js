@@ -1,4 +1,4 @@
-import { renderData, switchLoader } from "./load-data";
+import switchLoader from "./load-data";
 
 let newMap;
 let mapObj;
@@ -29,8 +29,7 @@ const makeRequest = async (query, check, fromMap) => {
       .json()
       .then(data => {
         if (!data) return;
-        renderData(data);
-        switchLoader();
+        switchLoader(data);
         warnElems.forEach(elem => (elem.textContent = "weatherGuard"));
         if (fromMap === "addpoint" && mapObj !== undefined) {
           new mapObj.Marker({

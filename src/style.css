@@ -539,7 +539,7 @@ input:checked+.slider:before {
 }
 
 .loader:after {
-  bottom: -20px;
+  bottom: -10px;
   width: 65px;
   background-color: rgb(223, 145, 19);
 }
