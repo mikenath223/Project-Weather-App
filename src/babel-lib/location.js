@@ -1,18 +1,17 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
 
-var _domInterface = require("./dom-interface");
+var _domInterface = require('./dom-interface');
 
-var _handler = require("./handler");
+var _handler = require('./handler');
 
 var showPosition = function showPosition(position) {
   var lat = position.coords.latitude;
-  var _long = position.coords.longitude;
-  (0, _handler.googleMaps)(lat, _long, true);
+  var long = position.coords.longitude;
+  (0, _handler.googleMaps)(lat, long, true);
 };
 
 var showError = function showError(error) {
@@ -28,5 +27,4 @@ var getLocation = function getLocation() {
   }
 };
 
-var _default = getLocation;
-exports["default"] = _default;
+exports.default = getLocation;

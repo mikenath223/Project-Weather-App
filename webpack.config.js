@@ -3,7 +3,7 @@ require('dotenv').config();
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/babel-lib/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -15,17 +15,6 @@ module.exports = {
     ]),
   ],
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: [/node_modules/],
-        query: {
-          presets: ['es2015'],
-          plugins: ['@babel/plugin-transform-async-to-generator'],
-        },
-      },
-    ],
     rules: [
       {
         test: /\.css$/,

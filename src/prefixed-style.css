@@ -555,6 +555,7 @@ input:checked+.slider:before {
 }
 
 .togg {
+  color: orangered;
   display: inline-block;
   margin-top: 10px;
   font-size: 25px;
@@ -722,7 +723,6 @@ input:checked+.slider:before {
 #map {
   height: 620px;
   min-width: 200px;
-  max-width: 454px;
 }
 
 .small-screen {

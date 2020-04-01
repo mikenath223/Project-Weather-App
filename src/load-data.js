@@ -1,13 +1,13 @@
-import Umbrella from './assets/umbrella.png';
-import Fun from './assets/fun.png';
-import BgStorm from './assets/wall1.jpg';
-import BgFun from './assets/wall2.jpg';
-import BgClear from './assets/scenic.jpg';
-import BgClouds from './assets/thunderstorm.jpg';
-import SmStorm from './assets/wall1-mobile.jpg';
-import SmFun from './assets/sunny-mobile.jpg';
-import SmClear from './assets/scenic-mobile.jpg';
-import SmClouds from './assets/thunderstorm-mobile.jpg'
+import Umbrella from '../assets/umbrella.png';
+import Fun from '../assets/fun.png';
+import BgStorm from '../assets/wall1.jpg';
+import BgFun from '../assets/wall2.jpg';
+import BgClear from '../assets/scenic.jpg';
+import BgClouds from '../assets/thunderstorm.jpg';
+import SmStorm from '../assets/wall1-mobile.jpg';
+import SmFun from '../assets/sunny-mobile.jpg';
+import SmClear from '../assets/scenic-mobile.jpg';
+import SmClouds from '../assets/thunderstorm-mobile.jpg'
 
 const selectQuery = query => document.querySelector(query);
 const countries = require('i18n-iso-countries');
