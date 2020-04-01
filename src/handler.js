@@ -43,9 +43,7 @@ const makeRequest = async (query, check, fromMap) => {
         warnElems.forEach(elem => (elem.textContent = "Incorrect Input.💢"));
       });
 
-    // selectQuery('.map-info>p').textContent = 'Click any location on the map to display weather info';
   } catch (error) {
-    // warnElems.forEach(elem => (elem.textContent = "Incorrect Input.💢"));
   }
 };
 
