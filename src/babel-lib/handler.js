@@ -9,7 +9,9 @@ var _loadData = require("./load-data");
 
 var _loadData2 = _interopRequireDefault(_loadData);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 var newMap = void 0;
 var mapObj = void 0;

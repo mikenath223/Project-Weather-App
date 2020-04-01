@@ -44,7 +44,9 @@ var _thunderstormMobile = require('../assets/thunderstorm-mobile.jpg');
 
 var _thunderstormMobile2 = _interopRequireDefault(_thunderstormMobile);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 var selectQuery = function selectQuery(query) {
   return document.querySelector(query);
@@ -66,19 +68,21 @@ var checkWeather = function checkWeather(data) {
   if (!/cloud|rain|storm/.test(data)) {
     weatherIcon.src = _fun2.default;
     advise.textContent = 'Go have fun.';
-    if (window.matchMedia("(max-width: 769px)")) {
+    if (window.screen.width == 769) {
       container.setAttribute('style', 'background-image: url(' + _sunnyMobile2.default + ')');
     } else {
       container.setAttribute('style', 'background-image: url(' + _wall4.default + ')');
     }
   } else if (/clear/.test(data)) {
 
-    if (window.matchMedia("(max-width: 769px)")) {} else {
+    if (window.screen.width == 769) {
+      container.setAttribute('style', 'background-image: url(' + _scenic2.default + ')');
+    } else {
       container.setAttribute('style', 'background-image: url(' + _scenicMobile2.default + ')');
     }
   } else if (/storm/.test(data)) {
 
-    if (window.matchMedia("(max-width: 769px)")) {
+    if (window.screen.width == 769) {
       container.setAttribute('style', 'background-image: url(' + _wall1Mobile2.default + ')');
     } else {
       container.setAttribute('style', 'background-image: url(' + _wall2.default + ')');
@@ -87,7 +91,7 @@ var checkWeather = function checkWeather(data) {
     advise.textContent = 'You might get wet out there.';
   } else {
 
-    if (window.matchMedia("(max-width: 769px)")) {
+    if (window.screen.width == 769) {
       container.setAttribute('style', 'background-image: url(' + _thunderstormMobile2.default + ')');
     } else {
       container.setAttribute('style', 'background-image: url(' + _thunderstorm2.default + ')');
@@ -128,7 +132,6 @@ var renderData = function renderData(data, message) {
   var mainData = data.main;
   var feelsLike = mainData.feels_like;
   var temp = mainData.temp;
-
 
   var newFeels = feelsLike * 1.8 + 32;
   newFeels = Math.round((newFeels + Number.EPSILON) * 100) / 100;
