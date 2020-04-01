@@ -1,4 +1,4 @@
-import './style.css';
+import './prefixed-style.css';
 import './Normalize.css';
 import './weather-icons.min.css';
 import getLocation from './location';

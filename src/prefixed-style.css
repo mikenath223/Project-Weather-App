@@ -54,6 +54,7 @@ body {
   -webkit-background-clip: text;
   color: rgba(0, 0, 0, 0.1);
   background-image: url(./assets/grad.png);
+  background-color: rgba(192, 192, 192, 0.473);
   -webkit-animation: move 6s infinite linear;
           animation: move 6s infinite linear;
 }
@@ -297,25 +298,6 @@ body {
   height: 20px;
 }
 
-.temp-h1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  font-size: 8em;
-  padding: 0;
-  margin: 0 25px;
-  font-family: 'Chewy', cursive;
-  -webkit-animation: move 6s infinite linear;
-          animation: move 6s infinite linear;
-}
-
 .humid-info, .wind-info, .feels-info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -329,6 +311,7 @@ body {
 
 .feels-score {
   font-size: 30px;
+  color: red;
 }
 
 .location {
@@ -341,7 +324,6 @@ body {
 }
 
 .humid {
-  width: 48px;
   height: 48px;
 }
 
@@ -413,6 +395,26 @@ body {
   color: rgba(0, 0, 0, 0.1);
   background-position: 50% 380px;
   background-image: url(./assets/gray21.jpg);
+}
+
+.temp-h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: rgba(25, 62, 226, 0.6);
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 8em;
+  padding: 0;
+  margin: 0 25px;
+  font-family: 'Chewy', cursive;
+  -webkit-animation: move 6s infinite linear;
+          animation: move 6s infinite linear;
 }
 
 .top-ad .date {
@@ -511,21 +513,15 @@ input:checked+.slider:before {
           transform: translateX(calc(110px / 2));
 }
 
-input:checked+.slider:before {}
-
 .round {
   border-radius: 34px;
 }
 
 .cel {
-  -webkit-animation: move 6s infinite linear;
-          animation: move 6s infinite linear;
   display: var(--celdisplay);
 }
 
 .faren {
-  -webkit-animation: move 6s infinite linear;
-          animation: move 6s infinite linear;
   margin-left: 10px;
   display: var(--farendisplay);
 }
@@ -534,7 +530,7 @@ input:checked+.slider:before {}
   content: '0';
   position: absolute;
   top: -20px;
-  color: gray;
+  color: rgba(25, 62, 226, 0.6);
   z-index: 7;
   font-size: 0.6em;
   right: 40px;
@@ -553,10 +549,12 @@ input:checked+.slider:before {}
   margin: 0 0 10px 40px;
   -ms-flex-item-align: end;
       align-self: flex-end;
+  -webkit-animation: move 6s infinite linear;
+          animation: move 6s infinite linear;
+  color: rgba(25, 62, 226, 0.6);
 }
 
 .togg {
-  color: orangered;
   display: inline-block;
   margin-top: 10px;
   font-size: 25px;
@@ -875,6 +873,9 @@ input:checked+.slider:before {}
   .weather-more span {
     font-size: 1.2em;
   }
+  .weather-desc {
+    font-size: 1.2em;
+  }
   .aside {
     border-radius: 20px;
     margin: 0;
@@ -903,7 +904,6 @@ input:checked+.slider:before {}
   }
   .temp>.temp-h1 {
     padding: 0;
-    color: rgb(0, 0, 0);
   }
   .search::-webkit-input-placeholder {
     font-size: 20px;
@@ -922,7 +922,6 @@ input:checked+.slider:before {}
   }
   .temp-h1 .cel, .temp-h1 .faren {
     margin: 0 0 0 20px;
-    color: rgba(25, 62, 226, 0.6);
   }
   .temp-h1 .cel::after, .temp-h1 .faren::after {
     color: rgba(25, 62, 226, 0.6);

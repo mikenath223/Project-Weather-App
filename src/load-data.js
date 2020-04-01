@@ -3,7 +3,11 @@ import Fun from './assets/fun.png';
 import BgStorm from './assets/wall1.jpg';
 import BgFun from './assets/wall2.jpg';
 import BgClear from './assets/scenic.jpg';
-import BgClouds from './assets/gloomy-clouds.jpg';
+import BgClouds from './assets/thunderstorm.jpg';
+import SmStorm from './assets/wall1-mobile.jpg';
+import SmFun from './assets/sunny-mobile.jpg';
+import SmClear from './assets/scenic-mobile.jpg';
+import SmClouds from './assets/thunderstorm-mobile.jpg'
 
 const selectQuery = query => document.querySelector(query);
 const countries = require('i18n-iso-countries');
@@ -23,17 +27,35 @@ const checkWeather = data => {
   if (!/cloud|rain|storm/.test(data)) {
     weatherIcon.src = Fun;
     advise.textContent = 'Go have fun.';
-    container.setAttribute('style', `background-image: url(${BgFun})`);
+    if (window.matchMedia("(max-width: 769px)")) {
+      container.setAttribute('style', `background-image: url(${SmFun})`);
+    } else {
+      container.setAttribute('style', `background-image: url(${BgFun})`);
+    }
   } else if (/clear/.test(data)) {
-    container.setAttribute('style', `background-image: url(${BgClear})`);
+
+    if (window.matchMedia("(max-width: 769px)")) {
+    } else {
+      container.setAttribute('style', `background-image: url(${SmClear})`);
+  }
   } else if (/storm/.test(data)) {
-    container.setAttribute('style', `background-image: url(${BgStorm})`);
+
+    if (window.matchMedia("(max-width: 769px)")) {
+      container.setAttribute('style', `background-image: url(${SmStorm})`);
+    } else {
+      container.setAttribute('style', `background-image: url(${BgStorm})`);
+    }   
     weatherIcon.src = Umbrella;
     advise.textContent = 'You might get wet out there.';
   } else {
+
+    if (window.matchMedia("(max-width: 769px)")) {
+    container.setAttribute('style', `background-image: url(${SmClouds})`);
+  } else {
+    container.setAttribute('style', `background-image: url(${BgClouds})`);
+  }
     weatherIcon.src = Umbrella;
     advise.textContent = 'You might get wet out there.';
-    container.setAttribute('style', `background-image: url(${BgClouds})`);
   }
 };
 

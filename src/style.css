@@ -42,6 +42,7 @@ body {
   -webkit-background-clip: text;
   color: rgba(0, 0, 0, 0.1);
   background-image: url(./assets/grad.png);
+  background-color: rgba(192, 192, 192, 0.473);
   animation: move 6s infinite linear;
 }
 
@@ -253,6 +254,7 @@ body {
   font-size: 8em;
   padding: 0;
   margin: 0 25px;
+  color: rgba(25, 62, 226, 0.6);
   font-family: 'Chewy', cursive;
   animation: move 6s infinite linear;
 }
@@ -276,7 +278,7 @@ body {
 }
 
 .humid {
-  width: 48px;
+  color: orangered;
   height: 48px;
 }
 
@@ -320,6 +322,26 @@ body {
   color: rgba(0, 0, 0, 0.1);
   background-position: 50% 380px;
   background-image: url(./assets/gray21.jpg);
+}
+
+.temp-h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: rgba(25, 62, 226, 0.6);
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 8em;
+  padding: 0;
+  margin: 0 25px;
+  font-family: 'Chewy', cursive;
+  -webkit-animation: move 6s infinite linear;
+          animation: move 6s infinite linear;
 }
 
 .top-ad .date {
@@ -398,19 +420,15 @@ input:checked+.slider:before {
   transform: translateX(calc(110px / 2));
 }
 
-input:checked+.slider:before {}
-
 .round {
   border-radius: 34px;
 }
 
 .cel {
-  animation: move 6s infinite linear;
   display: var(--celdisplay);
 }
 
 .faren {
-  animation: move 6s infinite linear;
   margin-left: 10px;
   display: var(--farendisplay);
 }
@@ -419,7 +437,7 @@ input:checked+.slider:before {}
   content: '0';
   position: absolute;
   top: -20px;
-  color: gray;
+  color: rgba(25, 62, 226, 0.6);
   z-index: 7;
   font-size: 0.6em;
   right: 40px;
@@ -437,6 +455,8 @@ input:checked+.slider:before {}
   font-size: 95px;
   margin: 0 0 10px 40px;
   align-self: flex-end;
+  animation: move 6s infinite linear;
+  color: rgba(25, 62, 226, 0.6);
 }
 
 .togg {
@@ -738,7 +758,6 @@ input:checked+.slider:before {}
   }
   .temp-h1 .cel, .temp-h1 .faren {
     margin: 0 0 0 20px;
-    color: rgba(25, 62, 226, 0.6);
   }
   .temp-h1 .cel::after, .temp-h1 .faren::after {
     color: rgba(25, 62, 226, 0.6);
@@ -779,6 +798,9 @@ input:checked+.slider:before {}
   }
   .advise-weather .top-ad * {
     font-size: 1.1em;
+  }
+  .weather-desc {
+    font-size: 1.2em;
   }
   .temp {
     display: flex;
