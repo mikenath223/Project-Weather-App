@@ -4,7 +4,7 @@
   "description": "A weather app using the open-weather-api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx run jest",
     "start:watch": "npx webpack --mode=development --watch",
     "start:build": "npx webpack --mode=production",
     "babel": "babel --presets es2015 src -d babel-lib"

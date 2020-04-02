@@ -29,8 +29,8 @@ body {
   background-attachment: fixed;
   overflow: hidden;
   background: url(./assets/wall2.jpg) no-repeat;
-  min-height: 90vh;
-  max-width: 90vw;
+  min-height: 100vh;
+  width: 100%;
   -webkit-box-flex: 3;
       -ms-flex-positive: 3;
           flex-grow: 3;
@@ -42,7 +42,6 @@ body {
           column-gap: 20px;
   -ms-grid-columns: 2fr 20px 1fr;
   grid-template-columns: 2fr 1fr;
-  border-radius: 20px;
 }
 
 .logo {
@@ -54,7 +53,6 @@ body {
   -webkit-background-clip: text;
   color: rgba(0, 0, 0, 0.1);
   background-image: url(./assets/grad.png);
-  background-color: rgba(192, 192, 192, 0.473);
   -webkit-animation: move 6s infinite linear;
           animation: move 6s infinite linear;
 }
@@ -177,6 +175,9 @@ body {
   -webkit-box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
   position: relative;
+  right: 50px;
+  border-radius: 20px;
+  margin: 25px 0;
 }
 
 .aside::before {
@@ -721,7 +722,7 @@ input:checked+.slider:before {
 }
 
 #map {
-  height: 620px;
+  height: 600px;
   min-width: 200px;
 }
 
@@ -780,6 +781,9 @@ input:checked+.slider:before {
 }
 
 @media only screen and (max-width: 769px) {
+  .aside {
+    right: 5px;
+  }
   .top-ad .date {
     margin-left: 100px;
     text-align: center;
@@ -810,6 +814,9 @@ input:checked+.slider:before {
 }
 
 @media only screen and (max-width: 750px) {
+  .aside {
+    right: 0px;
+  }
   .container {
     background-image: url(./assets/sunny-mobile.jpg)
   }

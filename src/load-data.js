@@ -25,34 +25,58 @@ const checkWeather = data => {
   const advise = selectQuery(".advise>p");
   const container = selectQuery(".container");
   if (!/cloud|rain|storm/.test(data)) {
-    weatherIcon.src = Fun;
+    weatherIcon.src = _fun2.default;
     advise.textContent = "Go have fun.";
-    if (window.matchMedia("(max-width: 769px)")) {
-      container.setAttribute("style", `background-image: url(${SmFun})`);
+    if (window.screen.width == 769) {
+      container.setAttribute(
+        "style",
+        "background-image: url(" + _sunnyMobile2.default + ")"
+      );
     } else {
-      container.setAttribute("style", `background-image: url(${BgFun})`);
+      container.setAttribute(
+        "style",
+        "background-image: url(" + _wall4.default + ")"
+      );
     }
   } else if (/clear/.test(data)) {
-    if (window.matchMedia("(max-width: 769px)")) {
-      container.setAttribute("style", `background-image: url(${BgClear})`);
+    if (window.screen.width == 769) {
+      container.setAttribute(
+        "style",
+        "background-image: url(" + _scenic2.default + ")"
+      );
     } else {
-      container.setAttribute("style", `background-image: url(${SmClear})`);
+      container.setAttribute(
+        "style",
+        "background-image: url(" + _scenicMobile2.default + ")"
+      );
     }
   } else if (/storm/.test(data)) {
-    if (window.matchMedia("(max-width: 769px)")) {
-      container.setAttribute("style", `background-image: url(${SmStorm})`);
+    if (window.screen.width == 769) {
+      container.setAttribute(
+        "style",
+        "background-image: url(" + _wall1Mobile2.default + ")"
+      );
     } else {
-      container.setAttribute("style", `background-image: url(${BgStorm})`);
+      container.setAttribute(
+        "style",
+        "background-image: url(" + _wall2.default + ")"
+      );
     }
-    weatherIcon.src = Umbrella;
+    weatherIcon.src = _umbrella2.default;
     advise.textContent = "You might get wet out there.";
   } else {
-    if (window.matchMedia("(max-width: 769px)")) {
-      container.setAttribute("style", `background-image: url(${SmClouds})`);
+    if (window.screen.width == 769) {
+      container.setAttribute(
+        "style",
+        "background-image: url(" + _thunderstormMobile2.default + ")"
+      );
     } else {
-      container.setAttribute("style", `background-image: url(${BgClouds})`);
+      container.setAttribute(
+        "style",
+        "background-image: url(" + _thunderstorm2.default + ")"
+      );
     }
-    weatherIcon.src = Umbrella;
+    weatherIcon.src = _umbrella2.default;
     advise.textContent = "You might get wet out there.";
   }
 };
@@ -147,4 +171,33 @@ const switchLoader = data => {
   }, 3500);
 };
 
-export default switchLoader;
+var getTimeCoords = async function getTimeCoords(lat, lng) {
+  var response = await fetch(
+    `http://api.geonames.org/timezoneJSON?lat=${lat}&lng=${lng}&username=mikenath223`,
+    {
+      mode: "cors"
+    }
+  );
+  response.json().then(function(data) {
+    const date = selectQuery(".date");
+
+    let day = new Date(data.time.slice(0, 9))
+      .toString()
+      .slice(0, 15)
+      .replace(/\s/, ", ");
+
+    let time = day.slice(17, 25).split(":");
+    let hour = time[0];
+    if (String(hour) == "00") hour = 12;
+    hour > 12
+      ? (time = `${hour - 12}:${time[1]}:${time[2]}PM`)
+      : (time = `${hour + ":" + time[1]}AM`);
+    date.innerHTML = day + " <br/> " + time;
+
+    console.log("====================================");
+    console.log(JSON.stringify(data.time));
+    console.log("====================================");
+  });
+};
+
+export { switchLoader, getTimeCoords };
