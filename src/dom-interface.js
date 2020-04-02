@@ -56,11 +56,10 @@ function headPalette() {
   ];
   let ind = 0;
   setInterval(() => {
-    console.log("call");
-    ind++;
     document.body
-      .querySelectorAll(".logo")
-      .forEach(el => (el.style.color = colorArr[ind]));
+    .querySelectorAll(".logo")
+    .forEach(el => (el.style.color = colorArr[ind]));
+    ind++;
     if (ind > 2) ind = 0;
   }, 1500);
 }

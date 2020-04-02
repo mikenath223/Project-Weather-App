@@ -185,19 +185,11 @@ var switchLoader = function switchLoader(data) {
 };
 
 var getTimeCoords = async function getTimeCoords(lat, lng) {
-  var response = await fetch("http://api.geonames.org/timezoneJSON?lat=" + lat + "&lng=" + lng + "&username=mikenath223", {
-    mode: "cors"
-  });
+  var response = await fetch("http://api.geonames.org/timezoneJSON?lat=" + lat + "&lng=" + lng + "&username=mikenath223");
   response.json().then(function (data) {
     var date = selectQuery(".date");
     var day = new Date(data.time.slice(0, 10)).toString().slice(0, 15);
-    console.log('====================================');
-    console.log(day);
-    console.log('====================================');
-
     var time = data.time.slice(-6, ).split(":");
-    console.log(time);
-    
     var hour = +time[0];
     if (String(hour) == "00") hour = 12;
     hour > 12 ? time = hour - 12 + ":" + time[1] + "PM" : time = hour + ":" + time[1] + "AM";

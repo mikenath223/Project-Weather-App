@@ -173,10 +173,7 @@ const switchLoader = data => {
 
 var getTimeCoords = async function getTimeCoords(lat, lng) {
   var response = await fetch(
-    `http://api.geonames.org/timezoneJSON?lat=${lat}&lng=${lng}&username=mikenath223`,
-    {
-      mode: "cors"
-    }
+    `http://api.geonames.org/timezoneJSON?lat=${lat}&lng=${lng}&username=mikenath223`
   );
   response.json().then(function(data) {
     const date = selectQuery(".date");
@@ -193,10 +190,6 @@ var getTimeCoords = async function getTimeCoords(lat, lng) {
       ? (time = `${hour - 12}:${time[1]}:${time[2]}PM`)
       : (time = `${hour + ":" + time[1]}AM`);
     date.innerHTML = day + " <br/> " + time;
-
-    console.log("====================================");
-    console.log(JSON.stringify(data.time));
-    console.log("====================================");
   });
 };
 
