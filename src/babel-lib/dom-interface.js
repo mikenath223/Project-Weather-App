@@ -60,11 +60,10 @@ function headPalette() {
   var colorArr = ["rgba(0, 0, 0, 0.4)", "rgba(240, 47, 26, 0.6)", "rgba(177, 138, 219, 0.6)", "rgba(223, 145, 197, 0.6)", "rgba(255, 68, 0, 0.7)"];
   var ind = 0;
   setInterval(function () {
-    console.log("call");
-    ind++;
     document.body.querySelectorAll(".logo").forEach(function (el) {
       return el.style.color = colorArr[ind];
     });
+    ind++;
     if (ind > 2) ind = 0;
   }, 1500);
 }

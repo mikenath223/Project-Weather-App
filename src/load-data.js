@@ -171,11 +171,11 @@ const switchLoader = data => {
   }, 3500);
 };
 
-var getTimeCoords = async function getTimeCoords(lat, lng) {
-  var response = await fetch(
+const getTimeCoords = async (lat, lng) => {
+  let response = await fetch(
     `http://api.geonames.org/timezoneJSON?lat=${lat}&lng=${lng}&username=mikenath223`
   );
-  response.json().then(function(data) {
+  response.json().then(function (data) {
     const date = selectQuery(".date");
 
     let day = new Date(data.time.slice(0, 9))
@@ -193,4 +193,21 @@ var getTimeCoords = async function getTimeCoords(lat, lng) {
   });
 };
 
-export { switchLoader, getTimeCoords };
+const timezone = async (lat, lng) => {
+  const loc = `${lat}, ${lng}`;
+  const targetDate = new Date()
+  const timestamp = targetDate.getTime() / 1000 + targetDate.getTimezoneOffset() * 60 // Current UTC date/time expressed as seconds since midnight, January 1, 1970 UTC
+  const apikey = process.env.TIMEZONE_API_KEY
+  const apicall = 'https://maps.googleapis.com/maps/api/timezone/json?location=' + loc + '&timestamp=' + timestamp + '&key=' + apikey
+  const date = document.querySelector(".date");
+  let response = await fetch(apicall)
+  response.json().then((data) => {
+    let offsets = data.dstOffset * 1000 + data.rawOffset * 1000
+    let localdate = new Date(timestamp * 1000 + offsets)
+    let day = localdate.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    let time = localdate.toLocaleTimeString();
+    date.innerHTML = day + " <br/> " + time;
+  })
+
+}
+export { switchLoader, timezone };

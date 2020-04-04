@@ -12,6 +12,7 @@ module.exports = {
     new webpack.EnvironmentPlugin([
       'OPEN_WEATHER_API_KEY',
       'GOOGLE_MAP_API_KEY',
+      'TIMEZONE_API_KEY'
     ]),
   ],
   module: {

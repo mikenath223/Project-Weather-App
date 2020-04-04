@@ -1,4 +1,4 @@
-import { switchLoader, getTimeCoords } from "./load-data";
+import { switchLoader, timezone } from "./load-data";
 
 let newMap;
 let mapObj;
@@ -30,7 +30,7 @@ const makeRequest = async (query, check, fromMap) => {
       .then(data => {
         if (!data) return;
         switchLoader(data);
-        getTimeCoords(Number(+data.coord.lat.toFixed(2)), Number(+data.coord.lon.toFixed(2)));
+        timezone(Number(+data.coord.lat.toFixed(2)), Number(+data.coord.lon.toFixed(2)));
         warnElems.forEach(elem => (elem.textContent = "weatherGuard"));
         if (fromMap === "addpoint" && mapObj !== undefined) {
           new mapObj.Marker({

@@ -420,9 +420,8 @@ body {
 
 .top-ad .date {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 17px;
+  font-size: 15px;
   text-align: right;
-  width: 200px;
 }
 
 .top-ad .date, .top-ad .location {

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getTimeCoords = exports.switchLoader = undefined;
+exports.timezone = exports.switchLoader = undefined;
 
 var _umbrella = require("../assets/umbrella.png");
 
@@ -16,6 +16,10 @@ var _fun2 = _interopRequireDefault(_fun);
 var _wall = require("../assets/wall1.jpg");
 
 var _wall2 = _interopRequireDefault(_wall);
+
+var _wall5 = require("../assets/wall2.jpg");
+
+var _wall4 = _interopRequireDefault(_wall5);
 
 var _scenic = require("../assets/scenic.jpg");
 
@@ -188,14 +192,32 @@ var getTimeCoords = async function getTimeCoords(lat, lng) {
   var response = await fetch("http://api.geonames.org/timezoneJSON?lat=" + lat + "&lng=" + lng + "&username=mikenath223");
   response.json().then(function (data) {
     var date = selectQuery(".date");
-    var day = new Date(data.time.slice(0, 10)).toString().slice(0, 15);
-    var time = data.time.slice(-6, ).split(":");
-    var hour = +time[0];
+
+    var day = new Date(data.time.slice(0, 9)).toString().slice(0, 15).replace(/\s/, ", ");
+
+    var time = day.slice(17, 25).split(":");
+    var hour = time[0];
     if (String(hour) == "00") hour = 12;
-    hour > 12 ? time = hour - 12 + ":" + time[1] + "PM" : time = hour + ":" + time[1] + "AM";
-    date.innerHTML = day + ", <br/> " + time;
+    hour > 12 ? time = hour - 12 + ":" + time[1] + ":" + time[2] + "PM" : time = hour + ":" + time[1] + "AM";
+    date.innerHTML = day + " <br/> " + time;
   });
 };
 
+var timezone = async function timezone(lat, lng) {
+  var loc = lat + ", " + lng;
+  var targetDate = new Date();
+  var timestamp = targetDate.getTime() / 1000 + targetDate.getTimezoneOffset() * 60; // Current UTC date/time expressed as seconds since midnight, January 1, 1970 UTC
+  var apikey = process.env.TIMEZONE_API_KEY;
+  var apicall = 'https://maps.googleapis.com/maps/api/timezone/json?location=' + loc + '&timestamp=' + timestamp + '&key=' + apikey;
+  var date = document.querySelector(".date");
+  var response = await fetch(apicall);
+  response.json().then(function (data) {
+    var offsets = data.dstOffset * 1000 + data.rawOffset * 1000;
+    var localdate = new Date(timestamp * 1000 + offsets);
+    var day = localdate.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    var time = localdate.toLocaleTimeString();
+    date.innerHTML = day + " <br/> " + time;
+  });
+};
 exports.switchLoader = switchLoader;
-exports.getTimeCoords = getTimeCoords;
+exports.timezone = timezone;

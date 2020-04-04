@@ -37,7 +37,7 @@ var makeRequest = async function makeRequest(query, check, fromMap) {
     response.json().then(function (data) {
       if (!data) return;
       (0, _loadData.switchLoader)(data);
-      (0, _loadData.getTimeCoords)(Number(+data.coord.lat.toFixed(2)), Number(+data.coord.lon.toFixed(2)));
+      (0, _loadData.timezone)(Number(+data.coord.lat.toFixed(2)), Number(+data.coord.lon.toFixed(2)));
       warnElems.forEach(function (elem) {
         return elem.textContent = "weatherGuard";
       });
