@@ -37,7 +37,7 @@ It also implements the Googlemaps API to showcase locations.
 
 # Validations
 
--ESLINT
+- ESLint
 
 # Get Started
 
@@ -50,11 +50,11 @@ It also implements the Googlemaps API to showcase locations.
 
 This project was built with these tools:
 
-- JAVASCRIPT (Webpack, Babel)
+- JavaScript (Webpack, Babel)
 - OpenWeather API
 - GoogleMaps API
 - HTML
-- CSS3
+- CSS
 
 # Authors
 
